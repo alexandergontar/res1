@@ -5,9 +5,11 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.Scanner;
 
+import Services.*;
+
 public class Main {
 
-    public static String[] readDataFromFile(String path) throws FileNotFoundException{
+   /*  public static String[] readDataFromFile(String path) throws FileNotFoundException{
         File file =  new File(path);
         Scanner scanner = new Scanner(file);       
         String line = scanner.nextLine();
@@ -50,17 +52,25 @@ public class Main {
         file.write("\n Where : {a , b, c} => {"+factors[0]+", "+factors[1]+", "+factors[2]+"}");
         file.write("\n The calculation result is : "+ result);
         file.close();
-    }
+    }*/
+
     public static void main(String[] args) throws IOException{         
-        final  String INFILE = "notes.txt";
+       /*  final  String INFILE = "notes.txt";
         final  String OUTFILE = "notes_new.txt";
         String[] data = readDataFromFile(INFILE);
         displayArray(data);
         int[] factors = parseFactors(data);
         printResultToScreen (factors);
-        printResultToFile (factors, OUTFILE);
+        printResultToFile (factors, OUTFILE);*/
         
-        
-        //new BL(new UI()).run();        
+        // в одну строчку
+        new BL(new UI(), new ReadWrite(), new Calcul()).run();
+        /* 
+        //или развернутая запись:
+        IUI ui = new UI();
+        IReadWrite rw = new ReadWrite();
+        ICalcul calc = new Calcul();
+        BL bl = new BL(ui, rw, calc);
+        bl.run(); */       
     }
 }

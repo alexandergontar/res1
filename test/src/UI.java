@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.Arrays;
 public class UI implements IUI{
     private Scanner scan;
     public UI(){
@@ -37,5 +38,11 @@ public class UI implements IUI{
       public void clearScreen(){
         System.out.print("\033[H\033[2J");//Очистка экрана
       }
+
+      public  void displayArray(String[] array) {
+        System.out.println(Arrays.toString(array));   
+    }
+
+
          
 }

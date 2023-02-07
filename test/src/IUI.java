@@ -3,5 +3,6 @@ public interface IUI {
   void showMessage(String message); 
   String readInput();
   int readInteger();
+  void displayArray(String[] array);
 }
  
