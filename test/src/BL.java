@@ -2,11 +2,11 @@ import Services.*;
 
 import java.io.FileNotFoundException;
 public class BL {
-    IUI ui;
-    IReadWrite rw;
-    ICalcul calc;
+   private IUI ui;
+   private IReadWrite rw;
+   private ICalcul calc;
 
-    final  String INFILE = "notes.txt";
+   private final  String INFILE = "notes.txt";
 
     public BL(IUI ui, IReadWrite rw, ICalcul calc){
       this.ui = ui;

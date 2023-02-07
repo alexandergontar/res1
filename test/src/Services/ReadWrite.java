@@ -16,8 +16,9 @@ public class ReadWrite implements IReadWrite {
             return data;
         } catch (FileNotFoundException e) {            
             e.printStackTrace();
+            return null;
         }
-        return null;
+        
     }
     
 }
