@@ -65,7 +65,12 @@ public class Main {
         printResultToFile (factors, OUTFILE);*/
         
         // в одну строчку
-        new BL(new UI(), new ReadWrite(), new Calcul(), new DataModel()).run();
+        new BL(
+            new UI(),
+             new ReadWrite(),
+              new Calcul(),
+               new DataModel()
+               ).run();
         /* 
         //или развернутая запись:
         IUI ui = new UI();
