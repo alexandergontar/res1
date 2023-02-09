@@ -5,7 +5,7 @@ public class UI implements IUI {
   private Scanner scan;
 
   public UI() {
-    scan = new Scanner(System.in, "Cp866");   
+    scan = new Scanner(System.in, "Cp866");
   }
 
   public String readInput() {
@@ -41,8 +41,14 @@ public class UI implements IUI {
     System.out.print("\033[H\033[2J");// Очистка экрана
   }
 
-  public void displayArray(String[] array) {
+  public <T> void displayArray(T[] array) {
     System.out.println(Arrays.toString(array));
   }
-  
+
+  public void printResultToScreen(int[] factors, double result) {
+    System.out.println(" a = " + factors[0] + ", b = " + factors[1] + ", c = " + factors[2]+".");
+    //System.out.println(" a ^ b + c = " + (Math.pow(factors[0], factors[1]) + factors[2]));
+    System.out.println(" a ^ b + c = " + result);
+  }
+
 }
