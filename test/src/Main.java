@@ -6,7 +6,7 @@ import java.io.IOException;
 //import java.util.Scanner;
 
 import Services.*;
-
+import Model.*;
 public class Main {
 
    /*  public static String[] readDataFromFile(String path) throws FileNotFoundException{
@@ -65,7 +65,7 @@ public class Main {
         printResultToFile (factors, OUTFILE);*/
         
         // в одну строчку
-        new BL(new UI(), new ReadWrite(), new Calcul()).run();
+        new BL(new UI(), new ReadWrite(), new Calcul(), new DataModel()).run();
         /* 
         //или развернутая запись:
         IUI ui = new UI();
