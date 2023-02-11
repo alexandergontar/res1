@@ -19,6 +19,7 @@ public class Main {
     static int[] findMultiples(int min, int max, int divider, Boolean flag) {
         // счетчик
         int count = 0;
+        if (divider == 0) return new int[0];
         for (int index = min; index <= max; index++) {
             Boolean cond = index % divider == 0;
             if (!flag)
