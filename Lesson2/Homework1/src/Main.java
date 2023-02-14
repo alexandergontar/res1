@@ -80,11 +80,11 @@ public class Main {
         String veryLongString = "";
         long begin = System.currentTimeMillis();
         veryLongString += "5+8";      
-        for (int i = 0; i < 1000; i++)
+        for (int i = 0; i < 10000; i++)
             veryLongString += "=";
         veryLongString += "13";
         
-        for (int i = 0; i < 1000; i++)
+        for (int i = 0; i < 10000; i++)
             veryLongString = veryLongString.replace("=", ravno);
         
         long end = System.currentTimeMillis();
@@ -93,11 +93,11 @@ public class Main {
         StringBuilder veryLongBuilder = new StringBuilder();
         begin = System.currentTimeMillis();
         veryLongBuilder.append("5+8");
-        for (int i = 0; i < 1000; i++)
+        for (int i = 0; i < 10000; i++)
             veryLongBuilder.append("=");
         veryLongBuilder.append("13");
         
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 10000; i++) {
             index = veryLongBuilder.indexOf("=");
             veryLongBuilder = veryLongBuilder.replace(index, index + 1, ravno);
         }
