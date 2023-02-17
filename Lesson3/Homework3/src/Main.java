@@ -80,7 +80,7 @@ public class Main {
         System.out.println("Отсортированный по алфавиту:");
         list.sort(String.CASE_INSENSITIVE_ORDER);        
         list.forEach(n -> System.out.println(n));
-        // Point 10
+        // Point 11
         System.out.println("\nПункт 11\nТест производительности");
         list.clear();
         list.add("0");        
