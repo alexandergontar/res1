@@ -1,11 +1,15 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
 
-public class Main { 
+public class Main {
 
     static String RecInverseString(int n, String reversed, String input) {
-        if (n == 0) { 
+        if (n == 0) {
             reversed += input.charAt(n);
             return reversed;
-        } 
+        }
         reversed += input.charAt(n);
         return RecInverseString(n - 1, reversed, input);
     }
@@ -23,8 +27,8 @@ public class Main {
         StringBuilder line1 = new StringBuilder(str1);
         StringBuilder line2 = new StringBuilder(str2);
         StringBuilder temp = line2.reverse();
-        System.out.println(temp.toString().equals(line1.toString()));        
-        //Пункт 3      
+        System.out.println(temp.toString().equals(line1.toString()));
+        // Пункт 3
         System.out.println("\nПункт 3\nРекурсивный разворот");
         String reversed = "";
         String straight = "7 x 8 = 56";
@@ -59,7 +63,7 @@ public class Main {
         line.append(Integer.toString(n1 * n2));
         System.out.println(line);
         // Пункты 5 и 6
-        System.out.println("\nПункты 5 и 6\nЗамена \"= на равно\"");        
+        System.out.println("\nПункты 5 и 6\nЗамена \"= на равно\"");
         String input = "5 + 8 = 13";
         System.out.println(input);
         String ravno = "равно";
@@ -72,21 +76,20 @@ public class Main {
         // 2 способ
         sb = new StringBuilder(input);
         sb.replace(index, index + 1, ravno);
-        System.out.println(sb.toString());   
+        System.out.println(sb.toString());
 
-        
         // Пункт 7
         System.out.println("\nПункт 7\nРабота с длинными строками");
         String veryLongString = "";
         long begin = System.currentTimeMillis();
-        veryLongString += "5+8";      
+        veryLongString += "5+8";
         for (int i = 0; i < 10000; i++)
             veryLongString += "=";
         veryLongString += "13";
-        
+
         for (int i = 0; i < 10000; i++)
             veryLongString = veryLongString.replace("=", ravno);
-        
+
         long end = System.currentTimeMillis();
         System.out.println("Время выполнения со строками: " + (end - begin) + " милисекунд.");
 
@@ -96,7 +99,7 @@ public class Main {
         for (int i = 0; i < 10000; i++)
             veryLongBuilder.append("=");
         veryLongBuilder.append("13");
-        
+
         for (int i = 0; i < 10000; i++) {
             index = veryLongBuilder.indexOf("=");
             veryLongBuilder = veryLongBuilder.replace(index, index + 1, ravno);
@@ -105,5 +108,28 @@ public class Main {
         end = System.currentTimeMillis();
         System.out.println("Время выполнения со стрингбилдером: " + (end - begin) + " милисекунд.");
 
+        //Object o = 1.3;
+
+       // System.out.println(o.getClass().getConstructors());
+        // double d = (double) o.getClass().getConstructor(null).newInstance(args);
+        // System.out.println(d);
+       // int [] mas = {0,1,2,3};
+       // System.arraycopy(o, n1, mas, n2, index);
+       ArrayList<Integer> list = new ArrayList<Integer>();
+       list.add(1975);
+        for (Object obj : list) {
+           System.out.println(obj); 
+        }
+
+        Integer [] arr = {1,2,3,4,5};
+        
+       
+        List <Integer> d = Arrays.asList(arr);
+         Iterator<Integer> iterator = d.iterator() ;
+         while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+         }     
+        System.out.println(d); 
+        
     }
 }
