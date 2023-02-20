@@ -1,7 +1,16 @@
+import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Deque;
 import java.util.LinkedList;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.PriorityQueue;
+import java.util.Queue;
+import java.util.Stack;
+
+import javax.lang.model.element.VariableElement;
+
+import org.omg.PortableServer.POAPackage.ObjectAlreadyActiveHelper;
 
 public class Main {
     public static void main(String[] args) throws Exception {
@@ -67,7 +76,7 @@ public class Main {
         System.out.println("\nПункт 9\nУдаление из старого списка элементов, отсутствующих в новом:");
         list.retainAll(list2);
         list.forEach(n -> System.out.println(n));
-       // Poin 10
+        // Poin 10
         System.out.println("\nПункт 10\nСортировка списка");
         list.add("blue");
         list.add("green");
@@ -76,29 +85,114 @@ public class Main {
 
         System.out.println("Исходный список:");
         list.forEach(n -> System.out.println(n));
-        
+
         System.out.println("Отсортированный по алфавиту:");
-        list.sort(String.CASE_INSENSITIVE_ORDER);        
+        list.sort(String.CASE_INSENSITIVE_ORDER);
         list.forEach(n -> System.out.println(n));
         // Point 11
         System.out.println("\nПункт 11\nТест производительности");
         list.clear();
-        list.add("0");        
-        List <String> linkedList = new LinkedList<>();
+        list.add("0");
+        List<String> linkedList = new LinkedList<>();
         linkedList.add("0");
         long begin = System.currentTimeMillis();
         for (int i = 0; i < 100000; i++) {
             list.add(0, "pink");
         }
         long end = System.currentTimeMillis();
-        System.out.println("Время выполнения ArrayList: " + (end - begin)+ " мс.");
+        System.out.println("Время выполнения ArrayList: " + (end - begin) + " мс.");
 
         begin = System.currentTimeMillis();
         for (int i = 0; i < 100000; i++) {
             linkedList.add(0, "pink");
         }
         end = System.currentTimeMillis();
-        System.out.println("Время выполнения LinkedList: " + (end - begin)+ " мс.");      
+        System.out.println("Время выполнения LinkedList: " + (end - begin) + " мс.");
+        // Queue
+        Queue<Integer> queu = new LinkedList<Integer>();
+        begin = System.currentTimeMillis();
+        for (int i = 0; i < 100000; i++) {
+            queu.add(i);
+        }
+        end = System.currentTimeMillis();
+        System.out.println("Время add выполнения Queue: " + (end - begin) + " мс.");
+        begin = System.currentTimeMillis();
+        for (int i = 0; i < 100000; i++) {
+            queu.remove();
+        }
+        end = System.currentTimeMillis();
+        System.out.println("Время remove выполнения Queue: " + (end - begin) + " мс.");
+        // Priority Queue
+        PriorityQueue<Integer> pq = new PriorityQueue<Integer>();
+        pq.add(118);
+        pq.add(1);
+        pq.add(18);
+        pq.add(8);
+        pq.add(81);
+        System.out.println(pq);
+        System.out.println(pq.poll());
+        System.out.println(pq.poll());
+        System.out.println(pq.poll());
+        System.out.println(pq.poll());
+        System.out.println(pq.poll());
+        System.out.println(pq.poll());
 
-    }   
+        // Deque
+        Deque<Integer> dequeue = new ArrayDeque<Integer>();
+        dequeue.addFirst(1);
+        dequeue.addLast(2);
+        // Stack
+        // System.out.println(isDigit("12"));
+        // System.out.println(isDigit("a"));
+        String[] exp = "1 2 3 * +".split(" ");
+        int res = 0;
+        System.out.println(exp);
+        Stack<Integer> st = new Stack<>();
+        for (int i = 0; i < exp.length; i++) {
+            if (isDigit(exp[i])) {
+                st.push(Integer.parseInt(exp[i]));
+            } else {
+                switch (exp[i]) {
+                    case "+":
+                        res = st.pop() + st.pop();
+                        st.push(res);
+                        break;
+
+                        case "-":
+                        res = -st.pop() + st.pop();
+                        st.push(res);
+                        break;
+
+                        case "*":
+                        res = st.pop() * st.pop();
+                        st.push(res);
+                        break;
+
+                        case "/":
+                        res = st.pop() / st.pop();
+                        st.push(res);
+                        break;                    
+
+                    default:
+                        break;
+                }
+            }
+            
+        }
+
+        System.out.printf("%d\n", st.pop());
+
+    }
+
+    private static boolean isDigit(String strNum) {
+        if (strNum == null) {
+            return false;
+        }
+        try {
+            double d = Double.parseDouble(strNum);
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+        return true;
+    }
 }
