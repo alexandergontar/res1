@@ -72,13 +72,14 @@ public class Main {
                 }
             }
         }
+        System.out.println("****** Несортированный список ******");
         for (int i = 0; i < lastName.size(); i++) {
             StringBuilder str = new StringBuilder();
             str.append(lastName.get(i)).append(" ").append(firstName.get(i).charAt(0)).append(". ")
-                    .append(patronymic.get(i).charAt(0)).append(". ").append("---").append(index.get(i));
+                    .append(patronymic.get(i).charAt(0)).append(". ").append("Индекс: ").append(index.get(i));
             System.out.println(str);
         }
-        System.out.println("************");
+        System.out.println("****** Сортировка по возрасту ******");
        // пересатновка индексов в порядке age
         bubleSortAge(age, index);
        // вывод по индексам
@@ -89,10 +90,10 @@ public class Main {
                     .append(gender.get(i));
             System.out.println(str);
         }
-        System.out.println("*************");
+        System.out.println("***** + Сортировка по полу ********");
        
         // перестановка индексов по gender
-        sortGender(gender, index);
+        sortGender(gender, index); 
         // вывод по индексам
         for (int i : index) {
             StringBuilder str = new StringBuilder();
