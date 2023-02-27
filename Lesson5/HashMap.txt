@@ -1,0 +1,38 @@
+//Создать хешмап строка число с 10 значениями и 2 способами выводим на экран
+
+        HashMap<String, String> hashMap = new HashMap<>();
+        hashMap.put("null", "один");
+        hashMap.put("first", "два");
+        hashMap.put("second", "три");
+        hashMap.put("third", "четыре");
+        hashMap.put("fourth", "пять");
+        hashMap.put("fifth", "шесть");
+        hashMap.put("sixth", "семь");
+        hashMap.put("seventh", "восемь");
+        hashMap.put("eight", "девять");
+        hashMap.put("night", "десять");
+
+        hashMap.forEach((k, v) -> System.out.println(v));
+        System.out.println("*******");
+
+
+        for (String s: hashMap.values()) {
+            System.out.println(s);
+        }
+
+        // Изменить значения хешмепа чтобы значения были в <>
+        for(String key: hashMap.keySet()) {
+            hashMap.compute(key, (k, v) -> "<" + v + ">");
+        }
+        System.out.println(hashMap);
+============================================================
+HashMap<String, String> hashMap2 = new HashMap<>();
+        hashMap2.put("Первый","Оля");
+        hashMap2.put("Четвертый","Маша");
+        hashMap2.put("Пятый","Марина");
+        hashMap2.put("Шестой","Елена");
+        for(String k: hashMap2.keySet()){
+            //hashMap2.merge(k,hashMap.getOrDefault(k,"No"),String::concat);
+            hashMap2.merge(k,hashMap.getOrDefault(k,"No"),(key,val)-> key + " + "+val);
+            System.out.println(hashMap2.get(k));
+        }
