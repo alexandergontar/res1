@@ -2,12 +2,10 @@ import java.util.ArrayList;
 
 public class User {
     private String name;
-    private ArrayList<Integer> keylist = new ArrayList<>();
-    //private int [] keys ;
+    private ArrayList<Integer> keylist = new ArrayList<>();    
 
     public User(String name, int [] keys) {
-        this.name = name;
-       // this.keys = keys;
+        this.name = name;       
         for (int key : keys) {
            keylist.add(key); 
         }
