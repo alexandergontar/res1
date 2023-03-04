@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Reserch {
    // private ArrayList<String> result = new ArrayList<>();
-    private ArrayList result = null;
+   // private ArrayList result;
     //private ArrayList res;
     private ArrayList<Node> tree;
    // private ArrayList<Person> relatives = new ArrayList<>();
@@ -12,7 +12,7 @@ public class Reserch {
     }
 
     public ArrayList<String> spend(Person p, Relationship re) {
-        result = new ArrayList<String>();
+        ArrayList<String>  result = new ArrayList<String>();
         for (Node t : tree) {
             if (t.p1.fullName == p.fullName && t.re == re) {
                 result.add(t.p2.fullName);
@@ -22,7 +22,7 @@ public class Reserch {
     }
 
     public ArrayList<Person> getRelatives(Person p, Relationship re){
-        result = new ArrayList<Person>();
+        ArrayList<Person>  result = new ArrayList<Person>();
         for (Node t : tree) {
             if (t.p1.fullName == p.fullName && t.re == re) {
                // relatives.add(t.p2);

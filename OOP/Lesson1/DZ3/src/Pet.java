@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Pet {
+public abstract class Pet {
 
     protected float price = 00.f;
     protected String name;
@@ -11,9 +11,7 @@ public class Pet {
         this.price = price;
     }
 
-    public void voice(Master m) {
-
-    }
+    public abstract void voice(Master m); 
 
     public float getPrice() {
         return price;
