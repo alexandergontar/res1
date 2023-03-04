@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 public class Person {
-    public String fullName;
+    protected String fullName;
     private ArrayList<Person> family = new ArrayList<>();
     
     public Person(String fullName) {
