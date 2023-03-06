@@ -1,5 +1,6 @@
+
 //import java.util.ArrayList;
-import java.util.*;
+//import java.util.*;
 
 public class Main {
     public static void main(String[] args) throws Exception {
@@ -9,11 +10,10 @@ public class Main {
         Person jane = new Person("Женя");
         Person ivan = new Person("Ваня");
 
-        if(ivan instanceof Person)
-        {
-            ivan = (Person)ivan;
+        if (ivan instanceof Person) {
+            ivan = (Person) ivan;
         }
-        
+
         GeoTree gt = new GeoTree();
         gt.append(irina, vasya);
         gt.append(irina, masha);
@@ -21,11 +21,40 @@ public class Main {
         gt.append(vasya, ivan);
 
         irina.setFamily(new Reserch(gt).getRelatives(irina, Relationship.parent));
-        vasya.setFamily(new Reserch(gt).getRelatives(vasya, Relationship.parent));        
-       
+        vasya.setFamily(new Reserch(gt).getRelatives(vasya, Relationship.parent));
+
         UI ui = new UI();
         ui.viewRelatives(vasya);
         ui.viewRelatives(irina);
+
+        Box<Integer> b  = new Box<>();
+        Integer [] arr = {1, 2, 3, 4};
+        b.setArray(arr);
+        Integer [] ar = b.getArray();
+        b.dispArray(ar);
     }
-  
+
+}
+
+class Box<T> {
+    // T stands for "Type"    
+    private T[] array;
+
+    public void setArray(T[] array) {
+        this.array = array;
+    }
+    public T [] getArray() {
+        for (int index = 0; index < array.length; index++) {
+            System.out.println(array[index]);
+        }
+        return array;
+    }
+
+    public void dispArray(T[] array){
+        for (int index = 0; index < array.length; index++) {
+            System.out.println(array[index]);
+        }
+    }
+
+
 }
