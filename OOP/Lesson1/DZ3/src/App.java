@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class App {
     public static void main(String[] args) throws Exception {
         System.out.println("Кошечки собачки");
@@ -20,6 +22,29 @@ public class App {
         misha.callPet(p1);
         petia.callPet(p2);
         vasya.callPet(p2);
-    }
+        ArrayList<Pet> plist = new ArrayList<>();
+        ArrayList<Cat> clist = new ArrayList<>();
+        ArrayList<Dog> dlist = new ArrayList<>();
 
+        plist.add(p1);
+        plist.add(p2);
+        plist.add(new Cat("barsik", 10.00f));
+        plist.add(new Cat("pushok", 11.00f));
+        plist.add(new Dog("tuzik", 11.00f));
+        plist.add(new Dog("charlie", 11.00f));
+        plist.add(new Dog("barbos", 11.00f));
+        plist.add(new Dog("bobik", 11.00f));
+        plist.add(new Dog("trezor", 11.00f));
+
+        for (Pet pet : plist) {
+            if (pet instanceof Dog) {
+                dlist.add((Dog) pet);
+            }
+            if (pet instanceof Cat) {
+                clist.add((Cat) pet);
+            }
+
+        }
+       System.out.printf("dogs: %d, cats: %d", dlist.size(), clist.size());
+    }
 }

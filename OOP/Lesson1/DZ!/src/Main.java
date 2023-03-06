@@ -1,4 +1,5 @@
 //import java.util.ArrayList;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) throws Exception {
@@ -7,12 +8,18 @@ public class Main {
         Person masha = new Person("Маша");
         Person jane = new Person("Женя");
         Person ivan = new Person("Ваня");
+
+        if(ivan instanceof Person)
+        {
+            ivan = (Person)ivan;
+        }
+        
         GeoTree gt = new GeoTree();
         gt.append(irina, vasya);
         gt.append(irina, masha);
         gt.append(vasya, jane);
         gt.append(vasya, ivan);
-        
+
         irina.setFamily(new Reserch(gt).getRelatives(irina, Relationship.parent));
         vasya.setFamily(new Reserch(gt).getRelatives(vasya, Relationship.parent));        
        

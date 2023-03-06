@@ -18,4 +18,5 @@ public class Dog extends Pet {
         return String.format("Собаку зовут %s цена: %.2f", super.name, super.price);
     }
     
+    
 }
