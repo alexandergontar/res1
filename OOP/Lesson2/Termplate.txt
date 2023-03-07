@@ -1,0 +1,25 @@
+  /*Box<Integer> b  = new Box<>();
+        Integer [] arr = {1, 2, 3, 4};
+        b.setArray(arr);
+        Integer [] ar = b.getArray();
+        b.dispArray(ar);*/
+
+class Box<T> {
+    // T stands for "Type"    
+    private T[] array;
+
+    public void setArray(T[] array) {
+        this.array = array;
+    }
+    public T [] getArray() {
+        for (int index = 0; index < array.length; index++) {
+            System.out.println(array[index]);
+        }
+        return array;
+    }
+
+    public void dispArray(T[] array){
+        for (int index = 0; index < array.length; index++) {
+            System.out.println(array[index]);
+        }
+    }

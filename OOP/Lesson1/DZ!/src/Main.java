@@ -6,7 +6,7 @@ public class Main {
         ITree tree = new GeoTree();       
         IResearch research = new Reserch(tree);
         IView view = new UI();
-        ArrayList<Person> persons = new DataSource().loadData(tree);
+        ArrayList<Person> persons = new DataSource().loadData();
         ResearchWork work = new ResearchWork(tree, research, view, persons);
         work.Run();
         

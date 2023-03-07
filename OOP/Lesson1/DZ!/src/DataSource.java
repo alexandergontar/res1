@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class DataSource {
-    public ArrayList<Person> loadData(ITree tree){        
+    public ArrayList<Person> loadData(){        
         ArrayList<Person> persons = new ArrayList<>();
         persons.add(new Person("Ирина"));
         persons.add(new Person("Вася"));
