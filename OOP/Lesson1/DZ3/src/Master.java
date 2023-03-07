@@ -5,7 +5,7 @@ public class Master {
         this.name = name;
     }
 
-    public void callPet(Pet pet){
+    public void callPet(IPet pet){
        pet.voice(this);
        
     }
@@ -13,5 +13,9 @@ public class Master {
     @Override
     public String toString(){
         return String.format("Хозяина зовут: %s", name);
+    }
+
+    public String getName(){
+        return name;
     }
 }

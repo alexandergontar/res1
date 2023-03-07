@@ -1,4 +1,4 @@
-public class Cat extends Pet{
+public class Cat extends Pet implements IPet{
 
     public Cat(String name, float price) {
         super(name, price);
