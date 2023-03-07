@@ -7,6 +7,7 @@ public class App {
         latte.addComponent(new Water("вода"));
         latte.addComponent(new Milk("молоко"));
         latte.addComponent(new Beans("бобы"));
+       
         for (Ingredient ingredient : latte) {
             System.out.println(ingredient);
         }

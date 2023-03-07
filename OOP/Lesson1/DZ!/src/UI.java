@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class UI {  
+public class UI implements IView{  
    
    
     public void getTreeView(StringBuilder tree, Person rootPerson, String indent,

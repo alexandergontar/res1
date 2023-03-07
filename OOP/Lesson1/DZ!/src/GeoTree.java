@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-public class GeoTree {
+public class GeoTree implements ITree{
     private ArrayList<Node> tree = new ArrayList<>();
 
     public ArrayList<Node> getTree() {
