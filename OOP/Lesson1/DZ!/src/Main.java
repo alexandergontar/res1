@@ -5,8 +5,8 @@ public class Main {
         ITree tree = new GeoTree();       
         IResearch research = new Reserch(tree);
         IView view = new UI();
-        IDataSource persons = new DataSource();
-        ResearchWork work = new ResearchWork(tree, research, view, persons);
+        IDataSource source = new DataSource();
+        ResearchWork work = new ResearchWork(tree, research, view, source);
         work.Run();
         
     }
