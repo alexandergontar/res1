@@ -6,15 +6,18 @@ public class ResearchWork {
     private IResearch research;
     private IView view;
     private ArrayList<Person> persons;
+    private IDataSource source;
 
-    public ResearchWork(ITree tree, IResearch research, IView view, ArrayList<Person> persons) {
+    public ResearchWork(ITree tree, IResearch research, IView view, IDataSource source) {
        this.tree = tree;
        this.research = research;
        this.view = view;
-       this.persons = persons; 
+       this.source = source;
+       this.persons = this.source.loadData();
     }
     
    private void configTree(){
+    
     Person p0 = persons.get(0);
     Person p1 = persons.get(1);
     Person p2 = persons.get(2);

@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class DataSource {
+public class DataSource implements IDataSource{
     public ArrayList<Person> loadData(){        
         ArrayList<Person> persons = new ArrayList<>();
         persons.add(new Person("Ирина"));
