@@ -1,5 +1,6 @@
 import java.util.ArrayList;
-public class Person {
+//import java.util.Comparator;
+public class Person implements Comparable<Person>{
     protected String fullName;
     private ArrayList<Person> family = new ArrayList<>();
     
@@ -23,4 +24,20 @@ public class Person {
     public String toString(){
         return fullName;
     }
+
+    @Override
+    public int compareTo(Person o) {
+        if(this.fullName.length() > o.fullName.length()){
+            return 1;
+        }
+        else if(this.fullName.length() < o.fullName.length()){
+            return -1;
+        }
+        else return 0;
+        
+    }
+
+   
+
+    
 }

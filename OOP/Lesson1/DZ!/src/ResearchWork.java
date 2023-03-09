@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class ResearchWork {
     
@@ -37,7 +38,11 @@ public class ResearchWork {
 
         view.viewRelatives(persons.get(1));
         view.viewRelatives(persons.get(0));
-
+        
+       // persons.sort((w1, w2) -> Integer.compare(w2.fullName.length(), w1.fullName.length()));
+       Collections.sort(persons);
+       
+        System.out.println(persons.toString());
 
     }
 

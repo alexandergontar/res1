@@ -11,7 +11,7 @@ public abstract class Pet {
         this.price = price;
     }
 
-    public abstract void voice(Master m); 
+    //public abstract void voice(Master m); 
 
     public float getPrice() {
         return price;
