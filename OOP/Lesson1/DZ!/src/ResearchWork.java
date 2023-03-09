@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-import java.util.Collections;
+//import java.util.Collections;
 
 public class ResearchWork {
     
@@ -18,8 +18,12 @@ public class ResearchWork {
     }
     
    private void configTree(){
-    
-    Person p0 = persons.get(0);
+    for (Person p1 : persons) {
+        for (Person p2 : p1.getChildren()) {
+            tree.append(p1, p2); 
+        }        
+    }
+    /*Person p0 = persons.get(0);
     Person p1 = persons.get(1);
     Person p2 = persons.get(2);
     Person p3 = persons.get(3);
@@ -27,7 +31,7 @@ public class ResearchWork {
     tree.append(p0, p1);
     tree.append(p0, p2);
     tree.append(p1, p3);
-    tree.append(p1, p4);
+    tree.append(p1, p4);*/
    }
     
     public void Run(){
@@ -39,10 +43,12 @@ public class ResearchWork {
         view.viewRelatives(persons.get(1));
         view.viewRelatives(persons.get(0));
         
+       //System.out.println(persons.get(0).getFamily());
+       //System.out.println(persons.get(1).getFamily()); 
        // persons.sort((w1, w2) -> Integer.compare(w2.fullName.length(), w1.fullName.length()));
-       Collections.sort(persons);
+       //Collections.sort(persons);
        
-        System.out.println(persons.toString());
+       // System.out.println(persons.toString());
 
     }
 

@@ -3,6 +3,7 @@ import java.util.ArrayList;
 public class Person implements Comparable<Person>{
     protected String fullName;
     private ArrayList<Person> family = new ArrayList<>();
+    private ArrayList<Person> children = new ArrayList<>();
     
     public Person(String fullName) {
         this.fullName = fullName;
@@ -18,6 +19,14 @@ public class Person implements Comparable<Person>{
 
     public void setFamily(ArrayList<Person> relatives){
         family = relatives;
+    }
+
+    public void addChild(Person p){
+        children.add(p);
+    }
+
+    public ArrayList<Person> getChildren(){
+       return children;  
     }
 
     @Override
