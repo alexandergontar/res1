@@ -18,9 +18,9 @@ public class ResearchWork {
     }
     
    private void configTree(){
-    for (Person p1 : persons) {
-        for (Person p2 : p1.getChildren()) {
-            tree.append(p1, p2); 
+    for (Person parent : persons) {
+        for (Person child : parent.getChildren()) {
+            tree.append(parent, child); 
         }        
     }
     /*Person p0 = persons.get(0);
