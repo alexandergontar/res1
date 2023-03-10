@@ -1,5 +1,6 @@
 import java.util.ArrayList;
-//import java.util.Collections;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class ResearchWork {
     
@@ -46,9 +47,11 @@ public class ResearchWork {
        //System.out.println(persons.get(0).getFamily());
        //System.out.println(persons.get(1).getFamily()); 
        // persons.sort((w1, w2) -> Integer.compare(w2.fullName.length(), w1.fullName.length()));
-       //Collections.sort(persons);
-       
-       // System.out.println(persons.toString());
+       Collections.sort(persons, new PersonNameComparator(true));
+       //persons.ToString().sort(String.CASE_INSENSITIVE_ORDER);
+        System.out.println(persons.toString());
+       //Comparator<String> comp = String.CASE_INSENSITIVE_ORDER;
+       //comp.compare(null, null);
 
     }
 

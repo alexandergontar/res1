@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public abstract class Pet {
+public abstract class Pet implements Comparable<Pet>{
 
     protected float price = 00.f;
     protected String name;
@@ -11,7 +11,12 @@ public abstract class Pet {
         this.price = price;
     }
 
-    //public abstract void voice(Master m); 
+    //public abstract void voice(Master m);
+    @Override
+    public int compareTo(Pet o1){
+        return (int)(this.price - o1.price);
+        //return 0;
+    } 
 
     public float getPrice() {
         return price;

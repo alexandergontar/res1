@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class UI implements IView{  
    
@@ -18,6 +19,8 @@ public class UI implements IView{
         tree.append(rootPerson.toString() + "\n");
 
         ArrayList<Person> subPersons = rootPerson.getFamily();
+        Collections.sort(subPersons, new PersonNameComparator(true));
+        
         for (int index = 0; index < subPersons.size(); index++) {
             getTreeView(tree, subPersons.get(index), indent, index == subPersons.size() - 1, start);
         }
