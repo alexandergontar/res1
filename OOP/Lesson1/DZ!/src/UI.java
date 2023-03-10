@@ -5,7 +5,7 @@ public class UI implements IView{
    
    
     public void getTreeView(StringBuilder tree, Person rootPerson, String indent,
-            boolean lastSubPerson, boolean start) {
+            boolean lastSubPerson, boolean start, boolean reverse) {
         tree.append(indent);
         if (start) {
             start = false;
@@ -19,17 +19,17 @@ public class UI implements IView{
         tree.append(rootPerson.toString() + "\n");
 
         ArrayList<Person> subPersons = rootPerson.getFamily();
-        Collections.sort(subPersons, new PersonNameComparator(true));
+        Collections.sort(subPersons, new PersonNameComparator(reverse));
         
         for (int index = 0; index < subPersons.size(); index++) {
-            getTreeView(tree, subPersons.get(index), indent, index == subPersons.size() - 1, start);
+            getTreeView(tree, subPersons.get(index), indent, index == subPersons.size() - 1, start, reverse);
         }
 
     }
 
-    public void viewRelatives(Person rootPerson){
+    public void viewRelatives(Person rootPerson, boolean reverse){
         StringBuilder tree = new StringBuilder();
-        getTreeView(tree, rootPerson, "", false, true);
+        getTreeView(tree, rootPerson, "", false, true, reverse);
         System.out.println(tree);
     }
 }
