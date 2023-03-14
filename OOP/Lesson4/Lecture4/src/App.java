@@ -4,6 +4,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.io.Serializable;
 import org.json.simple.JSONObject;
+import org.json.simple.JSONArray;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 public class App {
    static <T> T getElementFromUCollection(List<T> col, int index) {
@@ -11,7 +14,7 @@ public class App {
    }
 
    public static void main(String[] args) throws Exception {
-
+       JSONObject obj = new JSONObject();
      /*  List<String> list = new ArrayList<>();
       for (int index = 0; index < 5; index++) {
          list.add(String.format("string:  %d", index));
