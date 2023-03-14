@@ -20,6 +20,7 @@ public class JsonFormatter<T extends TaskToDo> {
     @SuppressWarnings("unchecked")
 
     public void Write(TaskList<T> priority, String fileName) {
+        
         List<T> priorityList = (List<T>) priority.getList();
         JSONArray taskList = new JSONArray();
         for (T task : priorityList) {
@@ -44,9 +45,10 @@ public class JsonFormatter<T extends TaskToDo> {
         }
     }
 
-    public void Read(String fileName, TaskList<T> priority) {
+    public List<T> Read(String fileName, TaskList<T> priority) {
         // JSON parser object to parse read file
-        //List<T> priorityList = (List<T>) priority.getList();
+        List<T> priorityList = (List<T>) priority.getList();
+        
         JSONParser jsonParser = new JSONParser();
 
         try (FileReader reader = new FileReader(fileName)) {
@@ -56,21 +58,25 @@ public class JsonFormatter<T extends TaskToDo> {
 
             // Iterate over task array
             
-            taskList.forEach(task -> parseUserObject((JSONObject) task));
-
+            taskList.forEach(task -> parseUserObject((JSONObject) task, priorityList));
+           return priorityList;
         } catch (FileNotFoundException e) {
             e.printStackTrace();
+            
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ParseException e) {
             e.printStackTrace();
         }
+        return priorityList;
     }
 
-    private void parseUserObject(JSONObject task) {
-        TaskToDo t =  new TaskToDo();
+    private void parseUserObject(JSONObject task, List<T> priorityList) {
+      // System.out.println(priorityList.get(0).getClass().getName());
+       
+        
         long id = (long) task.get("id");
-        t.id = id;
+       // t.id = id;
         System.out.print(id + ", ");
         String fullName = (String) task.get("fullName");
         System.out.print(fullName +", ");
@@ -82,7 +88,7 @@ public class JsonFormatter<T extends TaskToDo> {
         System.out.print(deadline+ ", ");       
         String description = (String) task.get("description");
         System.out.println(description);
-
+       // priorityList.add(t);
 
     }
 

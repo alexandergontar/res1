@@ -9,7 +9,7 @@ public class TaskToDo {
     private String createTime;
     private String deadline;
     private String fullName;
-    private String description;
+    protected String description;
 
     public TaskToDo(String deadline, String fullName){
         this.description = UUID.randomUUID().toString();
