@@ -33,6 +33,13 @@ public class App {
         System.out.println("\nDisplay list from file \"urgent_priority.json \"");
         System.out.println(uList);
 
+        TaskList<TaskToDo> taskToDo = new TaskList<>(null);
+        taskToDo.add(new MediumPriority("2023-03-22", "Petia Petrov"));
+        taskToDo.add(new UrgentPriority("еще вчера", "Vasya Pupkin"));
+        JsonFormatter<TaskToDo> mixed = new JsonFormatter<>();
+        mixed.Write(taskToDo, "mixed_priority.json");
+
+
 
     }
 }
