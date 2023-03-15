@@ -11,6 +11,7 @@ public class App {
         lowPriority.add(new LowPriority("2023-05-07", "Petia Petrov"));
         JsonFormatter<LowPriority> low = new JsonFormatter<>();
         low.Write(lowPriority, "low_priority.json");
+        System.out.println("=============================");
         low.Read("low_priority.json", new TaskList<>("low priority list"), 1);
 
         TaskList<MediumPriority> mediumPriority = new TaskList<>("medium priority list");
@@ -19,6 +20,7 @@ public class App {
         mediumPriority.add(new MediumPriority("2023-03-22", "Petia Petrov"));
         JsonFormatter<MediumPriority> medium = new JsonFormatter<>();
         medium.Write(mediumPriority, "medium_priority.json");
+        System.out.println("=============================");
         List<MediumPriority> mList = medium.Read("medium_priority.json", new TaskList<>("medium priority list"), 2);
         System.out.println("\nDisplay list from file \"medium_priority.json \"");
         System.out.println(mList);
@@ -29,6 +31,7 @@ public class App {
         urgentPriority.add(new UrgentPriority("еще вчера", "Petia Petrov"));
         JsonFormatter<UrgentPriority> urgent = new JsonFormatter<>();
         urgent.Write(urgentPriority, "urgent_priority.json");
+        System.out.println("=============================");
         List<UrgentPriority> uList = urgent.Read("urgent_priority.json", new TaskList<>("urgent priority list"), 0);
         System.out.println("\nDisplay list from file \"urgent_priority.json \"");
         System.out.println(uList);
@@ -38,8 +41,10 @@ public class App {
         taskToDo.add(new UrgentPriority("еще вчера", "Vasya Pupkin"));
         JsonFormatter<TaskToDo> mixed = new JsonFormatter<>();
         mixed.Write(taskToDo, "mixed_priority.json");
-
-
+        System.out.println("=============================");
+        List<TaskToDo> list = mixed.Read("mixed_priority.json", new TaskList<>("mixed list"), 10);
+        System.out.println("\nDisplay list from file \"mixed_priority.json \"");
+        System.out.println(list);
 
     }
 }
