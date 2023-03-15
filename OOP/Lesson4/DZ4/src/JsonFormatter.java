@@ -19,25 +19,25 @@ import org.json.simple.parser.ParseException;
 public class JsonFormatter<T extends TaskToDo> {
     @SuppressWarnings("unchecked")
 
-    public void Write(TaskList<T> priority, String fileName) {
+    public void Write(TaskList<T> tasks, String fileName) {
         
-        List<T> priorityList = (List<T>) priority.getList();
-        JSONArray taskList = new JSONArray();
-        for (T task : priorityList) {
-            JSONObject taskDetails = new JSONObject();
-            taskDetails.put("id", task.id);
-            taskDetails.put("createDate", task.getCreateDate());
-            taskDetails.put("createTime", task.getCreateTime());
-            taskDetails.put("deadline", task.getDeadline());
-            taskDetails.put("fullName", task.getFullname());
-            taskDetails.put("description", task.getDescription());
-            taskList.add(taskDetails);
-            System.out.println(task.toString());
+        List<T> taskList = (List<T>) tasks.getList();
+        JSONArray objList = new JSONArray();
+        for (T task : taskList) {
+            JSONObject obj = new JSONObject();
+            obj.put("id", task.id);
+            obj.put("createDate", task.getCreateDate());
+            obj.put("createTime", task.getCreateTime());
+            obj.put("deadline", task.getDeadline());
+            obj.put("fullName", task.getFullname());
+            obj.put("description", task.getDescription());
+            objList.add(obj);
+            //System.out.println(task.toString());
         }
-        System.out.println(taskList);
+       // System.out.println(objList);
         try (FileWriter file = new FileWriter(fileName)) {
 
-            file.write(taskList.toJSONString());
+            file.write(objList.toJSONString());
             file.flush();
 
         } catch (IOException e) {
@@ -45,50 +45,52 @@ public class JsonFormatter<T extends TaskToDo> {
         }
     }
 
-    public List<T> Read(String fileName, TaskList<T> priority) {
+    public List<T> Read(String fileName, TaskList<T> tasks, int priority) {        
+        List<T> taskList = (List<T>) tasks.getList();
+
         // JSON parser object to parse read file
-        List<T> priorityList = (List<T>) priority.getList();
-        
         JSONParser jsonParser = new JSONParser();
 
         try (FileReader reader = new FileReader(fileName)) {
             // Read JSON file
             Object obj = jsonParser.parse(reader);
-            JSONArray taskList = (JSONArray) obj;
-
-            // Iterate over task array
-            
-            taskList.forEach(task -> parseUserObject((JSONObject) task, priorityList));
-           return priorityList;
+            JSONArray objList = (JSONArray) obj;
+            // Iterate over task array            
+            objList.forEach(o -> parseUserObject((JSONObject) o, taskList, priority));
+           return taskList;
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
-            
+            e.printStackTrace();            
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        return priorityList;
+        return taskList;
     }
 
-    private void parseUserObject(JSONObject task, List<T> priorityList) {
-      // System.out.println(priorityList.get(0).getClass().getName());
-       
-        
-        long id = (long) task.get("id");
-       // t.id = id;
+    private void parseUserObject(JSONObject obj, List<T> taskList, int priority) {
+       //System.out.println(priorityList.get(0).getClass().getName());
+       T t;
+         t = (T)(new LowPriority(null, null));
+        long id = (long) obj.get("id");
+        t.id = id;
         System.out.print(id + ", ");
-        String fullName = (String) task.get("fullName");
+        String fullName = (String) obj.get("fullName");
+        t.fullName = fullName;
         System.out.print(fullName +", ");
-        String createDate = (String) task.get("createDate");
+        String createDate = (String) obj.get("createDate");
+        t.createDate = createDate;
         System.out.print(createDate+ " ");
-        String createTime = (String) task.get("createTime");
+        String createTime = (String) obj.get("createTime");
+        t.createTime = createTime;
         System.out.print(createTime+ ", ");
-        String deadline = (String) task.get("deadline");
+        String deadline = (String) obj.get("deadline");
+        t.deadline = deadline;
         System.out.print(deadline+ ", ");       
-        String description = (String) task.get("description");
+        String description = (String) obj.get("description");
+        t.description = description;
         System.out.println(description);
-       // priorityList.add(t);
+        taskList.add(t);
 
     }
 

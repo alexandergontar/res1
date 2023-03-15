@@ -9,7 +9,7 @@ public class TaskList<T extends TaskToDo> {
     public TaskList(String name) {
         this.taskList = new ArrayList<>();
         this.name = name;
-        System.out.printf("\n  >>  %s created\n",this.name);
+       // System.out.printf("\n  >>  %s created\n",this.name);
     }
 
     public void add(T task) {

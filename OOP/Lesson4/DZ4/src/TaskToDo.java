@@ -5,10 +5,10 @@ import java.util.UUID;
 public class TaskToDo {
     
     protected long id;
-    private String createDate;
-    private String createTime;
-    private String deadline;
-    private String fullName;
+    protected String createDate;
+    protected String createTime;
+    protected String deadline;
+    protected String fullName;
     protected String description;
 
     public TaskToDo(String deadline, String fullName){
