@@ -2,7 +2,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.UUID;
 
-public class TaskToDo {
+public abstract class TaskToDo {
     
     protected long id;
     protected String createDate;
@@ -19,7 +19,7 @@ public class TaskToDo {
         this.deadline = deadline;
         this.fullName = fullName;
     }
-    public TaskToDo(){}
+   // public TaskToDo(){}
 
     public String getCreateDate(){
         return createDate;

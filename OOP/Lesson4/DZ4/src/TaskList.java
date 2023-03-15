@@ -20,6 +20,9 @@ public class TaskList<T extends TaskToDo> {
     public List<T> getList(){
         return taskList;
     }
+    public String getName(){
+        return name;
+    }
 
     
 }

@@ -20,7 +20,7 @@ public class JsonFormatter<T extends TaskToDo> {
     @SuppressWarnings("unchecked")
 
     public void Write(TaskList<T> tasks, String fileName) {
-        
+
         List<T> taskList = (List<T>) tasks.getList();
         JSONArray objList = new JSONArray();
         for (T task : taskList) {
@@ -32,9 +32,9 @@ public class JsonFormatter<T extends TaskToDo> {
             obj.put("fullName", task.getFullname());
             obj.put("description", task.getDescription());
             objList.add(obj);
-            //System.out.println(task.toString());
+            // System.out.println(task.toString());
         }
-       // System.out.println(objList);
+        // System.out.println(objList);
         try (FileWriter file = new FileWriter(fileName)) {
 
             file.write(objList.toJSONString());
@@ -45,7 +45,7 @@ public class JsonFormatter<T extends TaskToDo> {
         }
     }
 
-    public List<T> Read(String fileName, TaskList<T> tasks, int priority) {        
+    public List<T> Read(String fileName, TaskList<T> tasks, int priority) {
         List<T> taskList = (List<T>) tasks.getList();
 
         // JSON parser object to parse read file
@@ -55,11 +55,11 @@ public class JsonFormatter<T extends TaskToDo> {
             // Read JSON file
             Object obj = jsonParser.parse(reader);
             JSONArray objList = (JSONArray) obj;
-            // Iterate over task array            
+            // Iterate over task array
             objList.forEach(o -> parseUserObject((JSONObject) o, taskList, priority));
-           return taskList;
+            return taskList;
         } catch (FileNotFoundException e) {
-            e.printStackTrace();            
+            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ParseException e) {
@@ -69,27 +69,25 @@ public class JsonFormatter<T extends TaskToDo> {
     }
 
     private void parseUserObject(JSONObject obj, List<T> taskList, int priority) {
-       //System.out.println(priorityList.get(0).getClass().getName());
-       T t;
-         t = (T)(new LowPriority(null, null));
-        long id = (long) obj.get("id");
-        t.id = id;
-        System.out.print(id + ", ");
-        String fullName = (String) obj.get("fullName");
-        t.fullName = fullName;
-        System.out.print(fullName +", ");
-        String createDate = (String) obj.get("createDate");
-        t.createDate = createDate;
-        System.out.print(createDate+ " ");
-        String createTime = (String) obj.get("createTime");
-        t.createTime = createTime;
-        System.out.print(createTime+ ", ");
-        String deadline = (String) obj.get("deadline");
-        t.deadline = deadline;
-        System.out.print(deadline+ ", ");       
-        String description = (String) obj.get("description");
-        t.description = description;
-        System.out.println(description);
+        T t;
+        if (priority == 1)
+            t = (T) (new LowPriority(null, null));
+        else if (priority == 2)
+            t = (T) (new MediumPriority(null, null));
+        else
+            t = (T) (new UrgentPriority(null, null));
+        t.id = (long) obj.get("id");
+        System.out.print(t.id + ", ");
+        t.fullName = (String) obj.get("fullName");
+        System.out.print(t.fullName + ", ");
+        t.createDate = (String) obj.get("createDate");
+        System.out.print(t.createDate + " ");
+        t.createTime = (String) obj.get("createTime");
+        System.out.print(t.createTime + ", ");
+        t.deadline = (String) obj.get("deadline");
+        System.out.print(t.deadline + ", ");
+        t.description = (String) obj.get("description");
+        System.out.println(t.description);
         taskList.add(t);
 
     }
