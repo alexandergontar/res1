@@ -12,7 +12,8 @@ public class App {
         View view = new NewConsoleView();
         Presenter presenter = new Presenter(view, Config.pathDb);
         presenter.LoadFromFile();
-
+        presenter.add();
+        presenter.saveToFile();
         try (Scanner in = new Scanner(System.in)) {
 
             while (true) {
@@ -33,6 +34,7 @@ public class App {
                 }
             }
         }
+       
 
     }
 }

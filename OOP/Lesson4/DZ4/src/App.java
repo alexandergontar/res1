@@ -45,6 +45,10 @@ public class App {
         List<TaskToDo> list = mixed.Read("mixed_priority.json", new TaskList<>("mixed list"), 10);
         System.out.println("\nDisplay list from file \"mixed_priority.json \"");
         System.out.println(list);
+        System.out.println("\nIterate on iterable urgebt list");
+        for (UrgentPriority task : urgentPriority) {
+            System.out.println(task.toString());
+        }
 
     }
 }

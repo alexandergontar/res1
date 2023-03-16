@@ -16,6 +16,7 @@ public class Contact  implements Comparable<Contact> {
         this.firstName = firstName;
         this.lastName = lastName;
         this.description = description;
+        this.date = LocalDate.now();
     }
     
     // добавить возможность создания объектов с бОльшим
