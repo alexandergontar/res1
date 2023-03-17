@@ -11,7 +11,9 @@ public class Contacts implements Iterable<Contact>{
         contacts.add(contact);
     }
     
-
+    public void delete(Contact contact){
+        contacts.remove(contact);
+    }
     public List<Contact> getList(){
         return contacts;
     }

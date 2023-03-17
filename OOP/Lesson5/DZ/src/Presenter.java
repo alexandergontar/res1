@@ -1,11 +1,16 @@
+//import java.util.List;
+
 public class Presenter {
     private View view;
     private Model model;
+    private Contacts contacts;
 
     public Presenter(View view, Model model) {
         this.view = view;
         this.model = model;
+        this.contacts = model.loadInfo();
     }
+
     public void addContact() {
         Contacts contacts = model.loadInfo();
         view.showMessage("Добавить контакт. \n");
@@ -17,25 +22,47 @@ public class Presenter {
         view.displayList(contacts.getList());
         model.saveInfo(contacts);
     }
+
     public void listContacts() {
-        Contacts contacts = model.loadInfo();
+        contacts = model.loadInfo();
         view.displayList(contacts.getList());
     }
 
-    public void findContactByName(){
-        Contacts contacts = model.loadInfo();
+    public Contact findContactByName() {
+        contacts = model.loadInfo();
         String name = view.readInput("Введите имя: ");
-        view.showMessage("-------"+name+"-------");
+        view.showMessage("-------" + name + "-------");
         for (Contact contact : contacts) {
-            System.out.println(contact.name);
+            //System.out.println(contact.name);
             if (contact.name.equals(name)) {
-                view.showMessage(name+" найден, телефон: "+ contact.telNumber);
+                view.showMessage(name + " найден, телефон: " + contact.telNumber);
+                return contact;
             }
         }
+        view.showMessage("Контакт не найден.");
+        return null;
     }
+
+    public void deleteContact() {
+        view.showMessage("Удаление по имени.");
+        contacts = model.loadInfo();
+        String name = view.readInput("Введите имя: ");
+        for (Contact contact : contacts) {
+            //System.out.println(contact.name);
+            if (contact.name.equals(name)) {
+                view.showMessage(name + " найден, телефон: " + contact.telNumber);
+                contacts.delete(contact);
+                model.saveInfo(contacts);
+                return;                
+            }             
+        }
+        view.showMessage("Контакт не найден.");
+    }
+
     public void userInterfaceLoop() {
         while (true) {
-            String key = view.readInput(" 1 - List Contacts,  2 - Add Contact, 3 - Find by name,  0 - Ecit: \n>>");
+            String key = view.readInput(
+                    " 1 - List Contacts,  2 - Add Contact, 3 - Find by name, 4 - Delete by name, 0 - Exit: \n>>");
             view.showMessage("\033[H\033[J");
             switch (key) {
                 case "1":
@@ -47,6 +74,9 @@ public class Presenter {
                 case "3":
                     findContactByName();
                     break;
+                case "4":
+                    deleteContact();
+                    break;
                 case "0":
                     return;
                 default:
@@ -54,7 +84,5 @@ public class Presenter {
                     break;
             }
         }
-
     }
-
 }
