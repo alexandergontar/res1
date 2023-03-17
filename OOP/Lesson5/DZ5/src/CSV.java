@@ -1,22 +1,17 @@
-
 import java.util.*;
 import java.io.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Model {
-    private String path;
-    public Model(String path){
-       this.path = path;
-    }
+public class CSV {
+   private String fileName;
 
-    public  void loadContacts(Map<String, List<String>> contacts) {
-        csvRead(contacts);
-      
-    }
+   public CSV(String fileName){
+      this.fileName = fileName;
+   }
 
-    private void csvRead(Map<String, List<String>> contacts){
-        try (BufferedReader reader = new BufferedReader(new FileReader("contacts.csv"))) {
+    public void csvRead(Map<String, List<String>> contacts, String fileName){
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
 
             Pattern pattern = Pattern.compile("^([^,\"]{2,50}),\"([0-9+, ]+)\"$");
 
@@ -39,6 +34,5 @@ public class Model {
         
     }
 
-    
     
 }

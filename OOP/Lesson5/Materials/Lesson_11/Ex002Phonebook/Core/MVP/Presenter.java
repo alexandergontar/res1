@@ -9,7 +9,7 @@ public class Presenter {
         this.view = view;
         model = new Model(pathDb);
     }
-
+   
     public void LoadFromFile() {
         model.load();
 
