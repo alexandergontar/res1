@@ -1,5 +1,4 @@
-public class Model {
-    
+public class Model {    
     public Contacts loadInfo(){
         Contacts contacts = new Contacts();
         JsonFormatter formatter = new JsonFormatter();
@@ -7,8 +6,7 @@ public class Model {
         return contacts;
     }
 
-    public void saveInfo(Contacts contacts){
-       // Contacts contacts = new Contacts();
+    public void saveInfo(Contacts contacts){       ;
         JsonFormatter formatter = new JsonFormatter();
         formatter.Write(contacts, "contacts.json");
     }

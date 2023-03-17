@@ -1,4 +1,3 @@
-import java.util.List;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -21,10 +20,8 @@ public class JsonFormatter {
         }
 
         try (FileWriter file = new FileWriter(fileName)) {
-
             file.write(objList.toJSONString());
             file.flush();
-
         } catch (IOException e) {
             e.printStackTrace();
         }       
