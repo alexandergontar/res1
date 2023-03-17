@@ -20,8 +20,7 @@ public class View {
         }
       }
     
-      public int readInteger(String prompt) {
-    
+      public int readInteger(String prompt) {    
         System.out.print(prompt);
         String inputNumber = scan.nextLine();
         try {
@@ -33,8 +32,7 @@ public class View {
         }
       }
     
-      public void showMessage(String message) {
-    
+      public void showMessage(String message) {    
         System.out.println(message);
       }
 
@@ -46,16 +44,11 @@ public class View {
        for (T item : list) {
           System.out.println(item);
        }
-      }
-
-      
-      
+      }    
     
       public void clearScreen() {
         System.out.print("\033[H\033[2J");// Очистка экрана
       }
 
-    /*public void displayList(Contacts outputContacts) {
-    }*/
 
 }

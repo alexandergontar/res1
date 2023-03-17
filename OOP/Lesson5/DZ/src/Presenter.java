@@ -1,5 +1,3 @@
-//import java.util.List;
-
 public class Presenter {
     private View view;
     private Model model;
@@ -11,7 +9,7 @@ public class Presenter {
         this.contacts = model.loadInfo();
     }
 
-    public void addContact() {
+    private void addContact() {
         Contacts contacts = model.loadInfo();
         view.showMessage("Добавить контакт. \n");
         Contact contact = new Contact(
@@ -23,17 +21,16 @@ public class Presenter {
         model.saveInfo(contacts);
     }
 
-    public void listContacts() {
+    private void listContacts() {
         contacts = model.loadInfo();
         view.displayList(contacts.getList());
     }
 
-    public Contact findContactByName() {
+    private Contact findContactByName() {
         contacts = model.loadInfo();
         String name = view.readInput("Введите имя: ");
         view.showMessage("-------" + name + "-------");
-        for (Contact contact : contacts) {
-            //System.out.println(contact.name);
+        for (Contact contact : contacts) {            
             if (contact.name.equals(name)) {
                 view.showMessage(name + " найден, телефон: " + contact.telNumber);
                 return contact;
@@ -43,12 +40,11 @@ public class Presenter {
         return null;
     }
 
-    public void deleteContact() {
+    private void deleteContact() {
         view.showMessage("Удаление по имени.");
         contacts = model.loadInfo();
         String name = view.readInput("Введите имя: ");
-        for (Contact contact : contacts) {
-            //System.out.println(contact.name);
+        for (Contact contact : contacts) {            
             if (contact.name.equals(name)) {
                 view.showMessage(name + " найден, телефон: " + contact.telNumber);
                 contacts.delete(contact);
@@ -59,11 +55,11 @@ public class Presenter {
         view.showMessage("Контакт не найден.");
     }
 
-    public void userInterfaceLoop() {
+    public void mainLoop() {
         while (true) {
             String key = view.readInput(
-                    " 1 - List Contacts,  2 - Add Contact, 3 - Find by name, 4 - Delete by name, 0 - Exit: \n>>");
-            view.showMessage("\033[H\033[J");
+                    " 1 - List Contacts,  2 - Add Contact, 3 - Find by name, 4 - Delete by name, 0 - Exit: \n>>");           
+            view.clearScreen();    
             switch (key) {
                 case "1":
                     listContacts();

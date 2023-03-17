@@ -24,10 +24,10 @@ public class JsonFormatter {
             file.flush();
         } catch (IOException e) {
             e.printStackTrace();
-        }       
+        }
     }
 
-    public void Read(Contacts contacts, String fileName){
+    public void Read(Contacts contacts, String fileName) {
         JSONParser jsonParser = new JSONParser();
 
         try (FileReader reader = new FileReader(fileName)) {
@@ -36,7 +36,6 @@ public class JsonFormatter {
             JSONArray objList = (JSONArray) obj;
             // Iterate over task array
             objList.forEach(o -> parseUserObject((JSONObject) o, contacts));
-            
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -45,15 +44,12 @@ public class JsonFormatter {
             e.printStackTrace();
         }
     }
-     private void parseUserObject(JSONObject obj, Contacts contacts){
-        Contact contact = new Contact(null, null);
-        
-        contact.name = (String) obj.get("name");
-        //System.out.print(contact.name + ", ");  
-        contact.telNumber = (String) obj.get("telNumber");
-        //System.out.println(contact.telNumber);     
-        contacts.add(contact);
 
-     }   
+    private void parseUserObject(JSONObject obj, Contacts contacts) {
+        Contact contact = new Contact(null, null);
+        contact.name = (String) obj.get("name");
+        contact.telNumber = (String) obj.get("telNumber");
+        contacts.add(contact);
+    }
 
 }
