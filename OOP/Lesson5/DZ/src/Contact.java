@@ -35,4 +35,15 @@ public class Contact implements Comparable<Contact> {
         Comparator<String> comparator = String.CASE_INSENSITIVE_ORDER;
        return comparator.compare(this.name, o.name);       
     }
+
+    
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Contact)) {
+          return false;  
+        }
+        Contact c = (Contact)obj;
+        return name.equals(c.name) && telNumber.equals(c.telNumber);
+        //return super.equals(obj);
+    }
 }

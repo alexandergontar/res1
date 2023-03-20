@@ -18,6 +18,13 @@ public class Presenter {
                 view.readInput("Введите имя: "),
                 view.readInput("Введите тел. номер: "));
 
+        for (Contact item : contacts) {
+            if(item.equals(contact)){
+                view.showMessage("Уже существует!");
+                return;
+            }
+        }
+               
         contacts.add(contact);
         view.displayList(contacts.getList());
         model.saveInfo(contacts);
@@ -35,7 +42,7 @@ public class Presenter {
         view.showMessage("-------" + name + "-------");
         for (Contact contact : contacts) {            
             if (contact.name.equals(name)) {
-                view.showMessage(name + " найден, телефон: " + contact.telNumber);
+                view.showMessage(name + " найден, телефон: " + contact.telNumber);                
                 return contact;
             }
         }
@@ -79,7 +86,7 @@ public class Presenter {
     public void mainLoop() {
         while (true) {
             String key = view.readInput(
-                    " 1 - List Contacts,  2 - Add Contact, 3 - Find by name, 4 - Delete by name, 5 - Edit contact, 0 - Exit: \n>>");           
+                    " 1 - List Contacts,\n 2 - Add Contact,\n 3 - Find by name,\n 4 - Delete by name,\n 5 - Edit contact,\n 0 - Exit: \n>>");           
             view.clearScreen();    
             switch (key) {
                 case "1":
