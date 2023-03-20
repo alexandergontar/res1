@@ -46,7 +46,7 @@ public class Presenter {
     private void deleteContact() {
         view.showMessage("Удаление по имени.");
         contacts = model.loadInfo();
-        String name = view.readInput("Введите имя: ");
+        String name = view.readInput("Введите имя: ");        
         for (Contact contact : contacts) {            
             if (contact.name.equals(name)) {
                 view.showMessage(name + " найден, телефон: " + contact.telNumber);
@@ -58,10 +58,28 @@ public class Presenter {
         view.showMessage("Контакт не найден.");
     }
 
+    private void editContact(){
+        view.showMessage("Реактирование записи.");
+        contacts = model.loadInfo();
+        String name = view.readInput("Введите имя: ");
+       // Contact contactToEdit;
+        for (Contact contact : contacts) {            
+            if (contact.name.equals(name)) {
+                view.showMessage(name + " найден, телефон: " + contact.telNumber);
+                //contacts.delete(contact);
+                contact.name  = view.readInput("Введите новое имя: ");
+                contact.telNumber = view.readInput("Введите новый телефон: ");
+                model.saveInfo(contacts);
+                return;                
+            }             
+        }
+        view.showMessage("Контакт не найден.");
+    }
+
     public void mainLoop() {
         while (true) {
             String key = view.readInput(
-                    " 1 - List Contacts,  2 - Add Contact, 3 - Find by name, 4 - Delete by name, 0 - Exit: \n>>");           
+                    " 1 - List Contacts,  2 - Add Contact, 3 - Find by name, 4 - Delete by name, 5 - Edit contact, 0 - Exit: \n>>");           
             view.clearScreen();    
             switch (key) {
                 case "1":
@@ -75,6 +93,9 @@ public class Presenter {
                     break;
                 case "4":
                     deleteContact();
+                    break;
+                case "5":
+                    editContact();
                     break;
                 case "0":
                     return;
