@@ -2,7 +2,7 @@ import java.util.Scanner;
 import java.util.Arrays;
 import java.util.List;
 
-public class View {
+public class View implements IView{
     private Scanner scan;
 
     public View() {

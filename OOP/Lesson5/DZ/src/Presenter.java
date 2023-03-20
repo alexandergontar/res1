@@ -1,9 +1,11 @@
+import java.util.Collections;
+
 public class Presenter {
-    private View view;
-    private Model model;
+    private IView view;
+    private IModel model;
     private Contacts contacts;
 
-    public Presenter(View view, Model model) {
+    public Presenter(IView view, IModel model) {
         this.view = view;
         this.model = model;
         this.contacts = model.loadInfo();
@@ -23,6 +25,7 @@ public class Presenter {
 
     private void listContacts() {
         contacts = model.loadInfo();
+        Collections.sort(contacts.getList());
         view.displayList(contacts.getList());
     }
 

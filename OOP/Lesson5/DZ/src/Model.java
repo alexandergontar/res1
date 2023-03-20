@@ -1,8 +1,10 @@
-public class Model {    
-    private JsonFormatter formatter;
-    public Model(){
-        formatter = new JsonFormatter();
-    }
+public class Model implements IModel{    
+    private IDataFormatter formatter;
+    public Model(IDataFormatter formatter){
+       // this.formatter = new JsonFormatter();
+        this.formatter = formatter;
+        
+    } 
     
     public Contacts loadInfo(){
         Contacts contacts = new Contacts();        

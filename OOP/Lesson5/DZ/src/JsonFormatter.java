@@ -7,7 +7,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-public class JsonFormatter {
+public class JsonFormatter implements IDataFormatter{
     @SuppressWarnings("unchecked")
 
     public void Write(Contacts contacts, String fileName) {
