@@ -44,6 +44,6 @@ public class Contact implements Comparable<Contact> {
         }
         Contact c = (Contact)obj;
         return name.equals(c.name) && telNumber.equals(c.telNumber);
-        //return super.equals(obj);
+        
     }
 }

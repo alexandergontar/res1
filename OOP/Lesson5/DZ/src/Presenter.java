@@ -23,10 +23,15 @@ public class Presenter {
                 view.showMessage("Уже существует!");
                 return;
             }
+            if (item.name.equals(contact.name) && item.telNumber.length()>0) {
+                item.telNumber += ", "+contact.telNumber;
+                model.saveInfo(contacts);
+                return;
+            }
         }
                
         contacts.add(contact);
-        view.displayList(contacts.getList());
+       // view.displayList(contacts.getList());
         model.saveInfo(contacts);
     }
 
