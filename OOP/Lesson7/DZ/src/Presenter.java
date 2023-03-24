@@ -3,9 +3,7 @@ import java.util.List;
 
 public class Presenter {
     private List<Messenger> messengers = new ArrayList<>();
-    private List<IView> views = new ArrayList<>();
-   // IView textView = new TextView();
-    //private Messenger fixed, mobile, smart;
+    private List<IView> views = new ArrayList<>();   
     public Presenter(){}
     public Presenter(Messenger ... messengers ){
        for (Messenger messenger : messengers) {
@@ -23,9 +21,7 @@ public class Presenter {
         }
     }
 
-    public void run(){       
-        //this.messengers.get(2).sendMessage("message!");
-        //IView textView = new TextView();
+    public void run(){    
         IView textView = views.get(0);
         while (true) {
            int index =  textView.readInteger(" Choose phone: \n 1 - Fixed,\n 2 - Mobile,\n 3 - Smart,\n 0 - Exit: ");
