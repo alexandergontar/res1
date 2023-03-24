@@ -1,6 +1,9 @@
 import java.util.Collections;
+import java.awt.*;
+import javax.swing.JOptionPane;
 
 public class Presenter {
+    private static final Component frame = null;
     private IView view;
     private IModel model;
     private Contacts contacts;
@@ -25,6 +28,7 @@ public class Presenter {
             }
             if (item.name.equals(contact.name) && item.telNumber.length()>0) {
                 item.telNumber += ", "+contact.telNumber;
+                item.numbers.add(contact.telNumber);
                 model.saveInfo(contacts);
                 return;
             }
@@ -90,6 +94,9 @@ public class Presenter {
 
     public void mainLoop() {
         while (true) {
+            Toolkit.getDefaultToolkit().beep();
+           
+            JOptionPane.showMessageDialog(frame, "Eggs are not supposed to be green.");
             String key = view.readInput(
                     " 1 - List Contacts,\n 2 - Add Contact,\n 3 - Find by name,\n 4 - Delete by name,\n 5 - Edit contact,\n 0 - Exit: \n>>");           
             view.clearScreen();    

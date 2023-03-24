@@ -2,6 +2,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.List;
+
 import org.json.simple.JSONObject;
 import org.json.simple.JSONArray;
 import org.json.simple.parser.JSONParser;
@@ -16,6 +18,7 @@ public class JsonFormatter implements IDataFormatter{
             JSONObject obj = new JSONObject();
             obj.put("name", contact.getName());
             obj.put("telNumber", contact.getTelNumber());
+            obj.put("numbers", contact.getNumbers());
             objList.add(obj);
         }
 
@@ -49,6 +52,7 @@ public class JsonFormatter implements IDataFormatter{
         Contact contact = new Contact(null, null);
         contact.name = (String) obj.get("name");
         contact.telNumber = (String) obj.get("telNumber");
+        contact.numbers =  (List<String>) obj.get("numbers");
         contacts.add(contact);
     }
 

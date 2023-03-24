@@ -1,12 +1,17 @@
+import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 
 public class Contact implements Comparable<Contact> {
     protected String name;
     protected String telNumber;
+    protected List<String> numbers;
 
     public Contact(String name, String telNumber) {
         this.name = name;
         this.telNumber = telNumber;
+        this.numbers = new ArrayList<String>();
+        this.numbers.add(telNumber);
     }
 
     public String getName() {
@@ -25,9 +30,23 @@ public class Contact implements Comparable<Contact> {
         this.telNumber = telNumber;
     }
 
+
+    public void addNumber(String number){
+       numbers.add(number);
+    }
+
+    public void setNumbers(List<String> numbers){
+        this.numbers = numbers;
+    }
+
+    public List<String> getNumbers(){
+        return this.numbers;
+    }
+
+
     @Override
     public String toString() {
-        return String.format("%s    %s", name, telNumber);
+        return String.format("%s   %s   %s"  , name, telNumber, numbers);
     }
 
     @Override
