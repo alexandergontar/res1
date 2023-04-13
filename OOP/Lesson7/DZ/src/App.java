@@ -60,6 +60,7 @@ public class App {
 
 	private static void sendPOST() throws IOException {
 		POST_URL = "http://automatiomservices.somee.com/api/users";
+		POST_URL ="http://api.thingspeak.com/update";
         URL obj = new URL(POST_URL);
 		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 		con.setRequestMethod("POST");
@@ -73,8 +74,10 @@ public class App {
         Random rand = new Random();
         int t = rand.nextInt(5) + 10;
         int h = rand.nextInt(10) + 50;
+		String my_Api_Key ="RHDHM2DJOL89OFMX";
         POST_PARAMS = "{\"temp\": " + t + ", \"humid\": " + h + "}";
         POST_PARAMS = "{\"name\": \"new name \", \"age\": " + h + "}";
+		POST_PARAMS = "{\"api_key\":\"" + my_Api_Key + "\",\"field1\":\"" + t + "\"}";
 		os.write(POST_PARAMS.getBytes("utf-8"), 0, POST_PARAMS.length());
 		os.flush();
 		os.close();
