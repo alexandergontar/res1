@@ -5,7 +5,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.nio.charset.StandardCharsets;
+//import java.nio.charset.StandardCharsets;
 import java.util.Random;
 
 
@@ -105,10 +105,13 @@ public class App {
 
 
     public static void main(String[] args) throws Exception {        
-        sendGET();
-        System.out.println("GET DONE");
-        sendPOST();
-        
+        Client client = new Client();
+        new Thread (client).start();	
+        for(int i = 0; i < 5; i++){
+			try{Thread.sleep(1000);}catch(Exception e){}
+			System.out.println("Main Thread!");
+		}
+		client.setFlag(true);
        /* Presenter presenter = new Presenter();
         presenter.setMesengers(new FixedPhone(), new MobilePhone(), new SmartPhone());
         presenter.setViewers(new TextView());
