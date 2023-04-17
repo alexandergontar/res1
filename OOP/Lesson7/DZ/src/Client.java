@@ -7,9 +7,11 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.Random;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Client implements Runnable {
-    private boolean flag = false;
+    public AtomicBoolean stop = new AtomicBoolean(false);
+    private boolean  flag = false;
     public void setFlag(boolean flag) {
         this.flag = flag;
     }
@@ -111,7 +113,9 @@ public class Client implements Runnable {
                     Thread.sleep(15000);
                 } catch (InterruptedException e) {
                 }
-                if(flag) break;
+                
+                //if(flag) break;
+                if(stop.get() == true) break;
             }
 
         } catch (IOException e) {

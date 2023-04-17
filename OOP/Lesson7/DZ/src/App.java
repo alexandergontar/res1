@@ -7,6 +7,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 //import java.nio.charset.StandardCharsets;
 import java.util.Random;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 
 //import java.net.http.HttpClient;
@@ -111,7 +112,8 @@ public class App {
 			try{Thread.sleep(1000);}catch(Exception e){}
 			System.out.println("Main Thread!");
 		}
-		client.setFlag(true);
+		//client.setFlag(true);
+		//client.stop.set(true);
        /* Presenter presenter = new Presenter();
         presenter.setMesengers(new FixedPhone(), new MobilePhone(), new SmartPhone());
         presenter.setViewers(new TextView());
