@@ -1,3 +1,4 @@
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class App {
     static int sumN(int N) {
@@ -49,7 +50,7 @@ public class App {
         }
     }
 
-    static int Fib(int end) throws Exception {
+    static int Fib(int end, AtomicInteger count) throws Exception {        
         if (end < 1)
             throw new Exception("Ввод должен быть > 0");
         if (end == 1)
@@ -62,37 +63,44 @@ public class App {
         int num2 = 0;
 
         for (int i = 3; i <= end; i++) {
+            count.incrementAndGet();
             num2 = num0 + num1;
-            num0 = num1;
+            num0 = num1;            
             num1 = num2;
         }
         return num2;
     }
 
-    static int FibRec(int n) throws Exception {
+    static int FibRec(int n, AtomicInteger count) throws Exception {
+        count.incrementAndGet();
         if (n < 1)
             throw new Exception("Ввод должен быть > 0");
         if (n == 1 || n == 2) {
             return n - 1;
         }
-        return FibRec(n - 1) + FibRec(n - 2);
+        return FibRec(n - 1, count) + FibRec(n - 2, count);
     }
 
     public static void main(String[] args) throws Exception {
         // System.out.println(sumN(5));
         // System.out.println(PrimeNumber(7));
         // System.out.println(PrimeNumber(10));
+        AtomicInteger count = new AtomicInteger(0);
         long start = System.currentTimeMillis();
-        System.out.println(Fib(40));
+        System.out.println(Fib(40, count));
+        System.out.println("Count: "+ count.get());
+        count.set(0);
         long finish = System.currentTimeMillis();
         long timeElapsed = finish - start;
         System.out.println("Time Elapsed for Fib: "+ timeElapsed);
-        start = System.currentTimeMillis();
-        System.out.println(FibRec(40));
+       
+        start = System.currentTimeMillis();        
+        System.out.println(FibRec(40, count));
+        System.out.println("Counter: "+ count.get());
         finish = System.currentTimeMillis();
         timeElapsed = finish - start;
         System.out.println("Time Elapsed for FibRec: "+ timeElapsed);
         // System.out.println(powerN(6, 4));
-        dispPrimes(15);
+        //dispPrimes(15);
     }
 }
