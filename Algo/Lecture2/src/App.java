@@ -67,6 +67,7 @@ public static void sort(int arr[])
         fillArray(randomArray);
         QuickSort quickSort = new QuickSort();
         SimpleSort simpleSort = new SimpleSort();
+        Search search = new Search();
         //int arr[] = {12, 11, 13, 5, 6, 7};
         System.out.println("Original array is");
         printArray(randomArray);        
@@ -91,5 +92,7 @@ public static void sort(int arr[])
         simpleSort.bubbleSort(randomArray);
         System.out.println("Стало");
         printArray(randomArray);
+        System.out.println(search.binarySearchRec(randomArray, 0, randomArray.length - 1, 10));
+
     }
 }

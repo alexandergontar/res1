@@ -1,0 +1,140 @@
+private static final Random random = new Random();
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        int[] arr = prepareArray(n);
+        printArray(arr);
+    }
+
+    /**
+     * @apiNote распечатываем массив в консоль
+     * @param arr входной массив
+     */
+    private static void printArray(int[] arr) {
+        for (int i : arr) {
+            System.out.printf("%d ",i);
+        }
+        System.out.println();
+    }
+
+    /**
+     * @apiNote формируем массив из рандомных чисел
+     * @param length длинна массива
+     * @return массив
+     */
+    private static int[] prepareArray(int length) {
+        int[] arr = new int[length];
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = random.nextInt(100);
+        }
+        return arr;
+    }
+
+============================================================
+/**
+     * @apiNote массив сортировки пузырьком
+     * @param arr
+     */
+    private static void bibleSort(int[] arr) {
+        boolean flag;
+        do {
+            flag = false;
+            for (int i = 0; i < arr.length-1; i++) {
+                if(arr[i]>arr[i+1]){
+                    int temp = arr[i];
+                    arr[i] = arr[i+1];
+                    arr[i+1] = temp;
+                    flag = true;
+                }
+            }
+        }while(flag);
+    }
+===============================================================
+  /**
+     * @apiNote быстрая сортировка
+     * @param arr входной массив
+     * @param startPosition начальная позиция
+     * @param endPosition конечная позиция
+     */
+    private static void quickSort(int[] arr, int startPosition, int endPosition) {
+        int left = startPosition;
+        int right = endPosition;
+        int pivot = arr[(startPosition + endPosition) / 2];
+        do {
+            while (arr[left] < pivot) {
+                left++;
+            }
+            while (arr[right] > pivot) {
+                right--;
+            }
+            if (left <= right){
+                if (left != right){
+                    int temp = arr[left];
+                    arr[left] = arr[right];
+                    arr[right] = temp;
+                }
+                left++;
+                right--;
+            }
+        } while (left <= right);
+        if (left < endPosition) {
+            quickSort(arr, left, endPosition);
+        }
+        if (startPosition < right) {
+            quickSort(arr, startPosition, right);
+        }
+    }
+}
+================================================================
+import java.util.Arrays;
+import java.util.Date;
+
+import static ru.geekbrains.Task01.prepareArray;
+import static ru.geekbrains.Task01.printArray;
+
+public class Task03 {
+    public static void main(String[] args) {
+        for (int i = 10_000; i < 100_000; i+=10_000) {
+            int[] arr = prepareArray(i);
+            Date start = new Date();
+            Task01.bubbleSort(Arrays.copyOf(arr, arr.length));
+            Date end = new Date();
+            long diff = end.getTime() - start.getTime();
+            System.out.println(diff);
+
+            Date start2 = new Date();
+            Task02.quickSort(Arrays.copyOf(arr, arr.length), 0, arr.length - 1);
+            Date end2 = new Date();
+            long diff2 = end2.getTime() - start2.getTime();
+            System.out.println(diff2);
+            System.out.println("===============");
+        }
+    }
+}
+=============================================================
+    /**
+     * @apiNote бинарный поиск
+     * @param arr входной массив
+     * @param value искомое значение
+     * @param left левая граница
+     * @param right правая граница
+     * @return индекс элемента
+     */
+    private static int binarySearch(int[] arr, int value, int left, int right) {
+        int mid;
+        if (right < left) {
+            return -1;
+        } else {
+            mid = (right - left) / 2 + left;
+        }
+
+        if (value > arr[mid]) {
+            return binarySearch(arr, value, mid + 1, right);
+        } else if (value < arr[mid]) {
+            return binarySearch(arr, value, left, mid - 1);
+        } else {
+            return mid;
+        }
+    }
+}
