@@ -93,6 +93,6 @@ public static void sort(int arr[])
         System.out.println("Стало");
         printArray(randomArray);
         System.out.println(search.binarySearchRec(randomArray, 0, randomArray.length - 1, 10));
-
+        
     }
 }

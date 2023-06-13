@@ -8,16 +8,16 @@ public class QuickSort {
 
         // выбрать опорный элемент
         int middle = low + (high - low) / 2;
-        int opora = array[middle];
+        int pivot = array[middle];
 
         // разделить на подмассивы, который больше и меньше опорного элемента
         int i = low, j = high;
         while (i <= j) {
-            while (array[i] < opora) {
+            while (array[i] < pivot) {
                 i++;
             }
 
-            while (array[j] > opora) {
+            while (array[j] > pivot) {
                 j--;
             }
 
