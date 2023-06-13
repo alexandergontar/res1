@@ -30,7 +30,7 @@ public class App {
         int arraySize = array.length;
 
         // Построение кучи (начальный индекс - середина массива, начало правой части
-        // дерева) Дальше просеиваем (heapify) пока не дойдем до 0, теперь array[0] = max
+        // дерева) Дальше просеиваем (heapify) пока не дойдем до 0, теперь array[0] будет = max
         for (int i = arraySize / 2 - 1; i >= 0; i--)
             heapify(array, arraySize, i);
 
@@ -64,7 +64,7 @@ public class App {
         int[] randomArray = new int[20];
         fillArray(randomArray);
         System.out.println("Исходный массив:");
-        printArray(randomArray);
+        printArray(randomArray);       
         sort(randomArray);
         System.out.println("Отсортированный массиив:");
         printArray(randomArray);
