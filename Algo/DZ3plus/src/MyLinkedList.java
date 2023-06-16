@@ -67,8 +67,8 @@ public class MyLinkedList implements Iterable<Node>{
     }
 
     @Override
-    public Iterator iterator() {
-        Iterator it = new Iterator() {
+    public Iterator<Node> iterator() {
+        Iterator<Node> it = new Iterator<Node>() {
             Node current = head;
 
             @Override
