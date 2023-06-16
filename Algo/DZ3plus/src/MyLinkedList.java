@@ -2,7 +2,7 @@ import java.util.Iterator;
 
 public class MyLinkedList implements Iterable<Node>{
     public Node head;
-    public Node tail;
+    //public Node tail;
 
     public void printLinkedList(MyLinkedList linkedList) {
         Node temp = linkedList.head;
