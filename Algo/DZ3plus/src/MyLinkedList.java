@@ -1,4 +1,6 @@
-public class MyLinkedList {
+import java.util.Iterator;
+
+public class MyLinkedList implements Iterable<Node>{
     public Node head;
     public Node tail;
 
@@ -63,5 +65,30 @@ public class MyLinkedList {
         head = head.next;
         return result;
     }
+
+    @Override
+    public Iterator iterator() {
+        Iterator it = new Iterator() {
+            Node current = head;
+
+            @Override
+            public boolean hasNext() {
+                return current != null;
+                //throw new UnsupportedOperationException("Unimplemented method 'hasNext'");
+            }
+
+            @Override
+            public Node next() {
+                    Node tmp = current;
+                    current = current.next;
+                    return tmp;
+                //throw new UnsupportedOperationException("Unimplemented method 'next'");
+            }
+            
+        };
+        return it; 
+    }
+
+
 
 }

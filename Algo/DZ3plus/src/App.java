@@ -32,5 +32,8 @@ public class App {
        System.out.println(myLinkedList.pop());
        System.out.println(myLinkedList.pop());
        myLinkedList.printLinkedList(myLinkedList);
+       for (Node i : myLinkedList ){
+        System.out.println(i.value);
+       }
     }
 }
