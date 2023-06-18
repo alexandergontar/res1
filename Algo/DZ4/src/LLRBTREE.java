@@ -11,7 +11,7 @@ public class LLRBTREE {
         Node childLeft = child.left;
  
         child.left = myNode;
-        myNode.right = childLeft;
+        myNode.right = childLeft;        
  
         return child;
     }
