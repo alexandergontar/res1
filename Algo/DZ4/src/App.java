@@ -5,8 +5,8 @@ public class App {
         LLRBTREE tree = new LLRBTREE();
      
     root = tree.insert(root, 10);
-    // to make sure that root remains
-    // black is color
+      // корневой элемент черный
+    
     root.color = false;
      
     root = tree.insert(root, 20);
@@ -24,9 +24,8 @@ public class App {
     root = tree.insert(root, 25);
     root.color = false;
  
-    // display the tree through inorder traversal.
+    // центрированный обход и распечатка    
     tree.inorder(root);
-    tree.DispTree(root);
- 
+    tree.DispTree(root); 
     }
 }

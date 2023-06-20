@@ -1,9 +1,8 @@
 
 
 public class LLRBTREE {
-     //private static Node root = null;
-     
-    // utility function to rotate node anticlockwise.
+          
+    // вспомогательный метод поворота против часовой стрелки.
     Node rotateLeft(Node myNode)
     {
         System.out.printf("left rotation!!\n");
@@ -16,7 +15,7 @@ public class LLRBTREE {
         return child;
     }
  
-    // utility function to rotate node clockwise.
+    // вспомогательный метод поворота по часовой стрелке.
     Node rotateRight(Node myNode)
     {
         System.out.printf("right rotation\n");
@@ -29,8 +28,7 @@ public class LLRBTREE {
         return child;
     }
  
-    // utility function to check whether
-    // node is red in color or not.
+    // проверка красный узел или нет    
     boolean isRed(Node myNode)
     {
         if (myNode == null)
@@ -38,8 +36,8 @@ public class LLRBTREE {
         return (myNode.color == true);
     }
  
-    // utility function to swap color of two
-    // nodes.
+    // метеод обмена цветами между узлами
+    
     void swapColors(Node node1, Node node2)
     {
         boolean temp = node1.color;
@@ -47,11 +45,11 @@ public class LLRBTREE {
         node2.color = temp;
     }
  
-    // insertion into Left Leaning Red Black Tree.
+    // вставка в левостороннее красно-черное дерево.
     Node insert(Node myNode, int data)
     {
-        // Normal insertion code for any Binary
-        // Search tree.
+        // обычная вставка в бинарное дерево
+        
         if (myNode == null)
             return new Node(data);
  
@@ -62,44 +60,41 @@ public class LLRBTREE {
             myNode.right = insert(myNode.right, data);
          
         else
-            return myNode;
+            return myNode; 
  
- 
-        // case 1.
-        // when right child is Red but left child is
-        // Black or doesn't exist.
+        // вариант 1.
+        // правый сын красный, а левый черный или не существует        
         if (isRed(myNode.right) && !isRed(myNode.left))
         {
-            // left rotate the node to make it into
-            // valid structure.
+            // левый разворот узла
+           
             myNode = rotateLeft(myNode);
  
-            // swap the colors as the child node
-            // should always be red
+            // обмен цветами
+            // потомок должен быть красным
             swapColors(myNode, myNode.left);
  
         }
  
-        // case 2
-        // when left child as well as left grand child in Red
+        // вариант 2
+        // левый сын и его сын красные
         if (isRed(myNode.left) && isRed(myNode.left.left))
         {
-            // right rotate the current node to make
-            // it into a valid structure.
+            // правый разворот текущего узла            
             myNode = rotateRight(myNode);
             swapColors(myNode, myNode.right);
         }
  
  
-        // case 3
-        // when both left and right child are Red in color.
+        // вариант 3
+        // и левый и правый сыны красные
         if (isRed(myNode.left) && isRed(myNode.right))
         {
-            // invert the color of node as well
-            // it's left and right child.
+            // изменить цвет узла
+            // и его правого и левого детей
             myNode.color = !myNode.color;
  
-            // change the color to black.
+            // меняем цвета детей на черный
             myNode.left.color = false;
             myNode.right.color = false;
         }
@@ -108,7 +103,7 @@ public class LLRBTREE {
     }
  
  
-    // Inorder traversal
+    // центрированный обход
     void inorder(Node node)
     {
         if (node != null)
@@ -118,10 +113,10 @@ public class LLRBTREE {
             inorder(node.right);
         }
     }
-    int COUNT = 2;
+    // распечатка дерева (вершина слева)
+    int COUNT = 5;
     void PrintTree(Node root, int space)
-        {
-            // Base case
+        {            
             if (root == null)
                 return;
 

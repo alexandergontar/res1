@@ -1,6 +1,5 @@
 public class App {
     public static void main(String[] args) throws Exception {
-        System.out.println("Hello, World!");
         Map<String, Integer> map = new Map<>();
         map.add("this", 1);
         map.add("coder", 2);

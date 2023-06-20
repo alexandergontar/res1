@@ -2,7 +2,7 @@ public class Node {
      Node left, right;
     int data;
  
-    // red ==> true, black ==> false
+    // красный --> true, черный --> false
     boolean color;
      
     Node(int data)
@@ -11,8 +11,7 @@ public class Node {
         left = null;
         right = null;
          
-        // New Node which is created is
-        // always red in color.
+        // новый узел всегда красный
         color = true;
     }
 }
