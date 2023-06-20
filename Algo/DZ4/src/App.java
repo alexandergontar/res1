@@ -1,31 +1,38 @@
 public class App {
     private static Node root = null;
+
     public static void main(String[] args) throws Exception {
-        
-        LLRBTREE tree = new LLRBTREE();
-     
-    root = tree.insert(root, 10);
-      // корневой элемент черный
-    
-    root.color = false;
-     
-    root = tree.insert(root, 20);
-    root.color = false;
-     
-    root = tree.insert(root, 30);
-    root.color = false;
-     
-    root = tree.insert(root, 40);
-    root.color = false;
-     
-    root = tree.insert(root, 50);
-    root.color = false;
-     
-    root = tree.insert(root, 25);
-    root.color = false;
- 
-    // центрированный обход и распечатка    
-    tree.inorder(root);
-    tree.DispTree(root); 
+       int [] data = {20, 10, 40, 30, 25, 50};
+        System.out.println("Без балансировки:");
+        LLRBTREE simpleTree = new LLRBTREE();
+        root = simpleTree.simpleInsert(root, data[0]);
+        root = simpleTree.simpleInsert(root, data[1]);
+        root = simpleTree.simpleInsert(root, data[2]);
+        root = simpleTree.simpleInsert(root, data[3]);
+        root = simpleTree.simpleInsert(root, data[4]);
+        root = simpleTree.simpleInsert(root, data[5]);
+        // центрированный обход и распечатка
+        simpleTree.inorder(root);
+        simpleTree.DispTree(root);
+
+        System.out.println("То же самое с балансировкой:");
+        root = null;
+        LLRBTREE balancedTree = new LLRBTREE();
+        root = balancedTree.insert(root, data[0]);
+        // корневой элемент черный
+        root.color = false;
+        root = balancedTree.insert(root, data[1]);
+        root.color = false;
+        root = balancedTree.insert(root, data[2]);
+        root.color = false;
+        root = balancedTree.insert(root, data[3]);
+        root.color = false;
+        root = balancedTree.insert(root, data[4]);
+        root.color = false;
+        root = balancedTree.insert(root, data[5]);
+        root.color = false;
+        // центрированный обход и распечатка
+        balancedTree.inorder(root);
+        balancedTree.DispTree(root);
     }
 }
