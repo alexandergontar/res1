@@ -1,0 +1,85 @@
+
+
+public class MyClass {
+    public static void main(String args[]) {
+       try(BufferedReader bf = new BufferedReader("")){
+           bf.write();
+          
+       }catch(Exception e){
+           bf.close();
+       }
+
+    }
+}
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+
+
+public class Task0 {
+    public static void main(String[] args) {
+
+    }
+        public void rwLine (Path pathRead, Path pathWrite) throws IOException {
+            try (BufferedReader in = Files.newBufferedReader(pathRead);
+                 BufferedWriter out = Files.newBufferedWriter(pathWrite)) {
+                    out.write(in.readLine());
+                    in.readLine();
+            } catch (IOException e){
+                
+            }
+        }
+}
+
+import java.io.IOException;
+
+public class Main {
+    public static void main(String[] args){
+        try{
+        doSomething();
+        } catch (IOException e) {
+            
+        }
+    }
+
+    public static void doSomething() throws IOException{
+    }
+}
+======================================================================
+import java.io.Closeable;
+import java.io.IOException;
+
+public class Task02 {
+    public static void main(String[] args) {
+
+        try (Counter counter = new Counter()) {
+            counter.add();
+            counter.close();
+            counter.add();
+        } catch (Exception e) {
+            System.out.println("Ресурс закрыт, нельзя вызвать метод add()");
+        }
+
+    }
+
+    private static class Counter implements Closeable {
+        int i;
+        boolean flag = true;
+
+        public void add() throws IOException {
+            System.out.println(i);
+            if (!flag) {
+                throw new IOException();
+            }
+            i++;
+        }
+
+        @Override
+        public void close() throws IOException {
+            flag = false;
+        }
+    }
+}
