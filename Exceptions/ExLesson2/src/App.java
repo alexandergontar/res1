@@ -1,35 +1,44 @@
-public class App {
-    public static void main(String[] args) throws Exception {
-        System.out.println("Начало");
-        try {
-            int а = 0;
-            int b = 42 / а;
-        } catch (ArithmeticException e) {
-            e.printStackTrace();
-        }
-        System.out.println("Конец");
+import java.util.Scanner;
 
-        try {
-            int a = 10;
-            a -= 10;
-            int b = 42 / a;
-            int[] с = { 1, 2, 3 };
-            с[42] = 99;
-        } catch (ArithmeticException e) {
-            System.out.println("Деление на ноль: " + e);
-        } catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println("Ошибка индексации массива: " +
-                    e);
+public class App {
+    
+
+    static float inputFloatNumber() {
+        Scanner scan = new Scanner(System.in, "Cp866");
+        float result = 0;
+        while (true) {
+            try {
+                System.out.print("Ведите  число: ");
+                String inputNumber = scan.nextLine();
+                result = Float.parseFloat(inputNumber);                
+                scan.close();
+                break;
+            } catch (NumberFormatException e) {                
+                System.out.println("Check your input!!!");
+            }
+
         }
-        System.out.println("Пocлe блока операторов try/catch");
+        return result;
+    }
+
+    public static void main(String[] args) throws Exception {
+        // 1
+        System.out.println("Задание 1: ");
+        System.out.println(inputFloatNumber());
+        // 2
+        System.out.println("Задание 2: ");
+        int [] intArray = {0, 1, 2, 3, 4, 5, 6}; // добавляем входной массив
         try {
-            //int a = 10;
-           // a -= 10;
-            //int b = 42 / a;
-            int[] с = { 1, 2, 3 };
-            с[42] = 99;
-        } catch (ArithmeticException | IndexOutOfBoundsException e) {
-            e.printStackTrace();
+           // int d = 0;
+            int d = 2; // избегаем деления на ноль
+           // double catchedRes1 = intArray[8] / d;
+            double catchedRes1 = intArray[5] / d; // избегаем выход за границы массива
+            System.out.println("catchedRes1 = " + catchedRes1);
+            // перехвытываем эти исключения, если не избежали выше
+        } catch (IndexOutOfBoundsException | ArithmeticException e) { 
+            System.out.println("Catching exception: " + e);
         }
+
+
     }
 }

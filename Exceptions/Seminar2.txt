@@ -1,0 +1,128 @@
+public static int sum2d(String[][] arr) {
+        int sum = 0;
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < 5; j++) {
+                int val = Integer.parseInt(arr[i][j]);
+                sum += val;
+            }
+        }
+        return sum;
+    }
+
+public class Main {
+    public static void main(String[] args) {
+        String[][] stringsTest = {{"1","2"}, {"3","4"}, {"abcde","1337"}};
+        System.out.println(sum2d(stringsTest));
+    }
+
+    public static int sum2d(String[][] arr) {
+        int sum = 0;
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[0].length; j++) {
+                int val;
+                try {
+                    val = Integer.parseInt(arr[i][j]);
+                } catch (NumberFormatException e) {
+                    val = 0;
+                }
+                sum += val;
+            }
+        }
+        return sum;
+    }
+}
+============================================================================
+public class SomeClass {
+public static void main(String[] args) {
+InputStream inputStream; try {
+String[] strings = {"asdf", "asdf"};
+String strinqsl = strings[2]; test ();
+int a = 1 / 0;
+inputStream = new FileInputStream("sdaf^dsaf"); } catch (Throwable e) { e.printStackTrace();
+} catch (StackOverflowError error) {
+System.out.println("asdfasdfdsa");
+) finally {
+System.out.println("Я все равно выполнился!");
+}
+System.out.println("Я жив!");
+}
+public static void test() throws IOException { File file - new File("l"); file.createNewFile() ;
+FileReader reader - new FileReader(file); reader.read(); test ();
+}
+}
+
+import java.io.*;
+
+public class Task03 {
+    public static void main(String[] args) {
+        String[] strings = {"asdf", "asdf"};
+        String strinqs1 = strings[1];
+        try (InputStream inputStream = new FileInputStream("sdaf^dsaf")) {
+            test();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println("Я жив!");
+    }
+
+    public static void test() throws IOException {
+        File file = new File("l");
+        file.createNewFile();
+        FileReader reader = new FileReader(file);
+        reader.read();
+    }
+}
+
+========================================================================
+System.out.println("Начало");
+        try {
+            int а = 0;
+            int b = 42 / а;
+        } catch (ArithmeticException e) {
+            e.printStackTrace();
+        }
+        System.out.println("Конец");
+
+        try {
+            int a = 10;
+            a -= 10;
+            int b = 42 / a;
+            int[] с = { 1, 2, 3 };
+            с[42] = 99;
+        } catch (ArithmeticException e) {
+            System.out.println("Деление на ноль: " + e);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Ошибка индексации массива: " +
+                    e);
+        }
+        System.out.println("Пocлe блока операторов try/catch");
+        try {
+            // int a = 10;
+            // a -= 10;
+            // int b = 42 / a;
+            int[] с = { 1, 2, 3 };
+            с[42] = 99;
+        } catch (ArithmeticException | IndexOutOfBoundsException e) {
+            e.printStackTrace();
+        }
+
+public static void main(String[] args) throws Exception {
+   try {
+       int a = 90;
+       int b = 3;
+       System.out.println(a / b);
+       printSum(23, 234);
+       int[] abc = { 1, 2 };
+       abc[3] = 9;
+   } catch (Throwable ex) {
+       System.out.println("Что-то пошло не так...");
+   } catch (NullPointerException ex) {
+       System.out.println("Указатель не может указывать на null!");
+   } catch (IndexOutOfBoundsException ex) {
+       System.out.println("Массив выходит за пределы своего размера!");
+   }
+}
+public static void printSum(Integer a, Integer b) throws FileNotFoundException {
+   System.out.println(a + b);
+}
+
