@@ -8,13 +8,13 @@ public class App {
         float result = 0;
         while (true) {
             try {
-                System.out.print("Ведите  число: ");
+                System.out.print("Введите  число: ");
                 String inputNumber = scan.nextLine();
                 result = Float.parseFloat(inputNumber);                
                 scan.close();
                 break;
             } catch (NumberFormatException e) {                
-                System.out.println("Check your input!!!");
+                System.out.println("Проверьте ввод!!!");
             }
 
         }

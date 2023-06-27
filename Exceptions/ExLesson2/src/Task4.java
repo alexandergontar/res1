@@ -5,9 +5,9 @@ public class Task4 {
         Scanner scan = new Scanner(System.in, "Cp866");
         System.out.print("Ведите сообщение: ");
         String input = scan.nextLine();
-        if (input.trim().isEmpty()) {            
+        if (input.trim().isEmpty()) {  // если введна пустая строка или пробелы          
             scan.close();
-            throw new RuntimeException("Пусоте сообщение!\nСообщение должно иметь содержание.");
+            throw new RuntimeException("Пустое сообщение!\nСообщение должно иметь содержание.");
         }
         scan.close();
         return input;
@@ -17,7 +17,7 @@ public class Task4 {
         System.out.println("Task4");
         try {
            System.out.println(inputString()); 
-        } catch (Exception e) {
+        } catch (RuntimeException e) {
             System.out.println(e.toString());
         }
         
