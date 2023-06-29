@@ -62,6 +62,7 @@ public class App {
             /* Date format is invalid */
             catch (ParseException e) {
                 System.out.println(strDate + " is Invalid Date format");
+                
                 return false;
             }
             /* Return true if date format is valid */
@@ -69,16 +70,29 @@ public class App {
         }
     }
 
+    static void checkInputFormat(String date)throws InputFormatException{
+       if(!validateJavaDate(date)){
+          throw new InputFormatException("Wrong date!");
+       } 
+    }
+
+
     public static void main(String[] args) throws Exception {
+        /*MyWIN win = new MyWIN();
+        win.setSize(300, 200);
+        win.setVisible(true);
         validateJavaDate("12/29/2016");
         validateJavaDate("12-29-2016");
         validateJavaDate("12,29,2016");
+        checkInputFormat("12/29/2016");*/
         String[] inputData = inputStringData();
         if (inputData.length != 4) {
-            // throw new RuntimeException("Введенные данные не соответствуют формату.");
+             throw new InputFormatException("Введенные данные не соответствуют формату.");
         }
+        checkInputFormat(inputData[3]);
         System.out.println(Arrays.toString(inputData));
         writeToTextFile(inputData, inputData[0] + inputData[1] + ".txt");
+       // win.dispose();
 
     }
 }
