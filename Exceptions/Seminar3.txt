@@ -1,0 +1,97 @@
+public class Task1 {
+
+    public static void main(String[] args) throws NumberNotFoundException {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Введите число: ");
+        int size = scanner.nextInt();
+
+        int[] array = new int[size];
+
+        System.out.println("Введите элементы массива: ");
+        for (int i = 0; i < size; i++) {
+            array[i] = scanner.nextInt();
+        }
+
+        System.out.println("Введите число для поиска: ");
+        int searchNumber = scanner.nextInt();
+
+        for (int i = 0; i < size; i++) {
+
+                if(array[i] == searchNumber){
+                    System.out.println(i);
+                    break;
+                } else {
+                    throw new NumberNotFoundException();
+                }
+        }
+    }
+}
+
+20:29
+public class NumberNotFoundException extends Exception{
+    public NumberNotFoundException() {
+        super("Число не найдено ");
+    }
+}
+==========================================================
+package Sem3;
+
+//1.Напишите программу, которая запрашивает у пользователя размер массива и элементы этого массива. Затем программа запрашивает у пользователя число
+// для поиска в массиве.
+// В случае, если число найдено в массиве, выведите его индекс.
+// Если число не найдено, обработайте исключение и выведите сообщение об ошибке.
+
+//2.Напишите программу, которая выполняет несколько операций, каждая из которых может вызывать исключение.
+// Например, попытайтесь открыть файл, выполнить деление на ноль,
+// вызвать метод с некорректными аргументами и т.д. Обработайте исключения для каждой операции и выведите информацию об ошибках.
+
+//3.Напишите программу, которая запрашивает у пользователя ввод некоторых данных, например, возраст, имя или адрес электронной почты.
+// Проверьте ввод пользователя на соответствие определенным критериям (например, возраст должен быть положительным числом, имя не должно содержать цифр и т.д.).
+// В случае некорректного ввода, обработайте исключение и выведите сообщение об ошибке.
+
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+
+public class Main {
+    public static void main(String[] args) {
+        int[] numbers = {1, 2, 3, 4, 5};
+        getNumberByIndex(4, numbers);
+
+        try {
+            isFileExists("Main.java");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    static int getNumberByIndex(int index, int[] array) throws IndexOutOfBoundsException {
+        return array[index];
+    }
+
+    static String isFileExists (String filePath) throws FileNotFoundException {
+        File file = new File(filePath);
+        if (file.exists()) return "Yay!";
+        throw new FileNotFoundException("File doesn't exist");
+    }
+}
+===================================================================
+
+import java.util.Scanner;
+
+public class Task03 {
+    public static void main(String[] args) {
+        Scanner scn = new Scanner(System.in);
+        System.out.println("Введите электронный адрес");
+        String input = scn.nextLine();
+        if (input.matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}")) {
+            System.out.println("Адрес корректный");
+        } else {
+            throw new RuntimeException("Адрес некорректный!");
+        }
+    }
+}
+
+

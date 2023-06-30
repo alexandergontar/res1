@@ -1,19 +1,20 @@
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
+//import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Scanner;
-//import java.util.Date;
 
 public class App {
 
     static String[] inputStringData() {
         Scanner scan = new Scanner(System.in, "Cp866");
-        System.out.print("Ведите Ваши данные: ");
+        System.out.println("Ведите Ваши данные через пробел. ");
+        System.out.println("Формат: Фамилия Имя Отчество №телефона дата_рождения(дд-мм-гггг) пол(f/m)  ");
         String input = scan.nextLine();
         if (input.trim().isEmpty()) { // если введна пустая строка или пробелы
             scan.close();
@@ -26,43 +27,40 @@ public class App {
 
     static void writeToTextFile(String[] data, String path) throws IOException {
         File file = new File(path);
-        FileOutputStream stream = new FileOutputStream(file);
-
-        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(stream));
-
-        for (int i = 0; i < data.length; i++) {
-            writer.write(data[i]);
-            writer.newLine();
+        boolean fileExists = false;
+        if(file.exists()) {
+            fileExists = true;
+            System.out.println("Exists!!!");
+        }
+        try (FileOutputStream stream = new FileOutputStream(file, fileExists);
+                BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(stream));) {
+            if(fileExists){writer.write("\n");}
+            for (int i = 0; i < data.length; i++) {
+                writer.write(data[i] + " ");
+                
+                // writer.newLine();
+            }
+        } catch (Exception e) {
+            System.out.println(e.toString());
         }
 
-        writer.close();
     }
+     
 
     static boolean validateJavaDate(String strDate) {
-        /* Check if date is 'null' */
+
         if (strDate.trim().equals("")) {
             return true;
-        }
-        /* Date is not 'null' */
-        else {
-            /*
-             * Set preferred date format,
-             * For example MM-dd-yyyy, MM.dd.yyyy,dd.MM.yyyy etc.
-             */
-            SimpleDateFormat sdfrmt = new SimpleDateFormat("MM-dd-yyyy");
+        } else {
+            SimpleDateFormat sdfrmt = new SimpleDateFormat("dd-MM-yyyy");
             sdfrmt.setLenient(false);
-            /*
-             * Create Date object
-             * parse the string into date
-             */
             try {
-                 sdfrmt.parse(strDate);
+                sdfrmt.parse(strDate);
                 System.out.println(strDate + " is valid date format");
             }
             /* Date format is invalid */
             catch (ParseException e) {
                 System.out.println(strDate + " is Invalid Date format");
-                
                 return false;
             }
             /* Return true if date format is valid */
@@ -70,29 +68,22 @@ public class App {
         }
     }
 
-    static void checkInputFormat(String date)throws InputFormatException{
-       if(!validateJavaDate(date)){
-          throw new InputFormatException("Wrong date!");
-       } 
+    static void checkInputFormat(String[] data) throws InputFormatException {
+        if (data.length != 6) {
+            throw new InputFormatException("Количество данных не соответствуют формату.");
+        }
+        if (!validateJavaDate(data[4])) {
+            throw new InputFormatException("Неверная дата рождения!");
+        }
+
     }
 
-
     public static void main(String[] args) throws Exception {
-        /*MyWIN win = new MyWIN();
-        win.setSize(300, 200);
-        win.setVisible(true);
-        validateJavaDate("12/29/2016");
-        validateJavaDate("12-29-2016");
-        validateJavaDate("12,29,2016");
-        checkInputFormat("12/29/2016");*/
+
         String[] inputData = inputStringData();
-        if (inputData.length != 4) {
-             throw new InputFormatException("Введенные данные не соответствуют формату.");
-        }
-        checkInputFormat(inputData[3]);
         System.out.println(Arrays.toString(inputData));
-        writeToTextFile(inputData, inputData[0] + inputData[1] + ".txt");
-       // win.dispose();
+        checkInputFormat(inputData);        
+        writeToTextFile(inputData, inputData[0]  + ".txt");
 
     }
 }
