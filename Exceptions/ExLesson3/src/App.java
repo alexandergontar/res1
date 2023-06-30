@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 public class App {
 
-    static String[] inputStringData() {
+    static String[] inputStringData() throws RuntimeException{
         Scanner scan = new Scanner(System.in, "Cp866");
         System.out.println("Ведите Ваши данные через пробел. ");
         System.out.println("Формат: Фамилия Имя Отчество №телефона дата_рождения(дд-мм-гггг) пол(f/m)  ");
@@ -74,6 +74,11 @@ public class App {
         }
         if (!validateJavaDate(data[4])) {
             throw new InputFormatException("Неверная дата рождения!");
+        }
+        if (!data[5].equals("m") ) {
+           if (!data[5].equals("f")) {
+            throw new InputFormatException("Неправильный указатель пола ");
+           } 
         }
 
     }
