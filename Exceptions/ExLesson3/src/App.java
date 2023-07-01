@@ -1,7 +1,6 @@
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
-//import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.text.ParseException;
@@ -50,20 +49,18 @@ public class App {
     static boolean validateJavaDate(String stringDate) {
 
         if (stringDate.trim().equals("")) {
-            return true;
+            return false;
         } else {
             SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
             format.setLenient(false);
             try {
                 format.parse(stringDate);
                 System.out.println(stringDate + " is valid date format");
-            }
-            /* Date format is invalid */
+            }            
             catch (ParseException e) {
                 System.out.println(stringDate + " is Invalid Date format");
                 return false;
-            }
-            /* Return true if date format is valid */
+            }            
             return true;
         }
     }
