@@ -1,0 +1,105 @@
+https://www.youtube.com/watch?v=Zv0vlfAD2aw
+root@db-linux:/home/db# ll /sys/fs/cgroup/cpuset/
+ls: cannot access '/sys/fs/cgroup/cpuset/': No such file or directory
+root@db-linux:/home/db# ls -l /sys/fs/cgroup/cpuset/
+ls: cannot access '/sys/fs/cgroup/cpuset/': No such file or directory
+root@db-linux:/home/db# ls -l /sys/
+total 0
+drwxr-xr-x   2 root root 0 июл  6 14:10 block
+drwxr-xr-x  44 root root 0 июл  6 14:10 bus
+drwxr-xr-x  72 root root 0 июл  6 14:10 class
+drwxr-xr-x   4 root root 0 июл  6 14:10 dev
+drwxr-xr-x  16 root root 0 июл  6 14:10 devices
+drwxr-xr-x   5 root root 0 июл  6 14:10 firmware
+drwxr-xr-x   8 root root 0 июл  6 14:10 fs
+drwxr-xr-x   2 root root 0 июл  6 14:56 hypervisor
+drwxr-xr-x  16 root root 0 июл  6 14:10 kernel
+drwxr-xr-x 194 root root 0 июл  6 14:10 module
+drwxr-xr-x   3 root root 0 июл  6 14:11 power
+root@db-linux:/home/db# ls -l /sys/fs/
+total 0
+drwx-----T  3 root root 0 июл  6 14:10 bpf
+dr-xr-xr-x 12 root root 0 июл  6 14:10 cgroup
+drwxr-xr-x  2 root root 0 июл  6 14:57 ecryptfs
+drwxr-xr-x  4 root root 0 июл  6 14:57 ext4
+drwxr-xr-x  3 root root 0 июл  6 14:10 fuse
+drwxr-x---  2 root root 0 июл  6 14:10 pstore
+root@db-linux:/home/db# mkdir /sys/fs/cgroup/cpuset/testgroup1
+mkdir: cannot create directory ‘/sys/fs/cgroup/cpuset/testgroup1’: No such file or directory
+root@db-linux:/home/db# mkdir /sys/fs/cgroup/
+mkdir: cannot create directory ‘/sys/fs/cgroup/’: File exists
+root@db-linux:/home/db# ls -l /sys/fs
+total 0
+drwx-----T  3 root root 0 июл  6 14:10 bpf
+dr-xr-xr-x 12 root root 0 июл  6 14:10 cgroup
+drwxr-xr-x  2 root root 0 июл  6 14:57 ecryptfs
+drwxr-xr-x  4 root root 0 июл  6 14:57 ext4
+drwxr-xr-x  3 root root 0 июл  6 14:10 fuse
+drwxr-x---  2 root root 0 июл  6 14:10 pstore
+root@db-linux:/home/db# ls -l /sys/fs/cgroup/
+total 0
+-r--r--r--  1 root root 0 июл  6 14:10 cgroup.controllers
+-rw-r--r--  1 root root 0 июл  6 14:58 cgroup.max.depth
+-rw-r--r--  1 root root 0 июл  6 14:58 cgroup.max.descendants
+-rw-r--r--  1 root root 0 июл  6 14:10 cgroup.procs
+-r--r--r--  1 root root 0 июл  6 14:58 cgroup.stat
+-rw-r--r--  1 root root 0 июл  6 14:11 cgroup.subtree_control
+-rw-r--r--  1 root root 0 июл  6 14:58 cgroup.threads
+-rw-r--r--  1 root root 0 июл  6 14:58 cpu.pressure
+-r--r--r--  1 root root 0 июл  6 14:11 cpuset.cpus.effective
+-r--r--r--  1 root root 0 июл  6 14:11 cpuset.mems.effective
+-r--r--r--  1 root root 0 июл  6 14:58 cpu.stat
+drwxr-xr-x  2 root root 0 июл  6 14:10 dev-hugepages.mount
+drwxr-xr-x  2 root root 0 июл  6 14:10 dev-mqueue.mount
+drwxr-xr-x  2 root root 0 июл  6 14:10 init.scope
+-rw-r--r--  1 root root 0 июл  6 14:58 io.cost.model
+-rw-r--r--  1 root root 0 июл  6 14:58 io.cost.qos
+-rw-r--r--  1 root root 0 июл  6 14:58 io.pressure
+-rw-r--r--  1 root root 0 июл  6 14:58 io.prio.class
+-r--r--r--  1 root root 0 июл  6 14:58 io.stat
+-r--r--r--  1 root root 0 июл  6 14:58 memory.numa_stat
+-rw-r--r--  1 root root 0 июл  6 14:58 memory.pressure
+--w-------  1 root root 0 июл  6 14:58 memory.reclaim
+-r--r--r--  1 root root 0 июл  6 14:58 memory.stat
+-r--r--r--  1 root root 0 июл  6 14:58 misc.capacity
+drwxr-xr-x  2 root root 0 июл  6 14:10 proc-sys-fs-binfmt_misc.mount
+drwxr-xr-x  2 root root 0 июл  6 14:10 sys-fs-fuse-connections.mount
+drwxr-xr-x  2 root root 0 июл  6 14:10 sys-kernel-config.mount
+drwxr-xr-x  2 root root 0 июл  6 14:10 sys-kernel-debug.mount
+drwxr-xr-x  2 root root 0 июл  6 14:10 sys-kernel-tracing.mount
+drwxr-xr-x 69 root root 0 июл  6 14:53 system.slice
+drwxr-xr-x  4 root root 0 июл  6 14:55 user.slice
+root@db-linux:/home/db# mkdir /sys/fs/cgroup/cpuset
+root@db-linux:/home/db# mkdir /sys/fs/cgroup/cpuset/testgroup1
+root@db-linux:/home/db# ll /sys/fs/cgroup/cpuset/testgroup1
+total 0
+drwxr-xr-x 2 root root 0 июл  6 15:00 ./
+drwxr-xr-x 3 root root 0 июл  6 15:00 ../
+-r--r--r-- 1 root root 0 июл  6 15:00 cgroup.controllers
+-r--r--r-- 1 root root 0 июл  6 15:00 cgroup.events
+-rw-r--r-- 1 root root 0 июл  6 15:00 cgroup.freeze
+--w------- 1 root root 0 июл  6 15:00 cgroup.kill
+-rw-r--r-- 1 root root 0 июл  6 15:00 cgroup.max.depth
+-rw-r--r-- 1 root root 0 июл  6 15:00 cgroup.max.descendants
+-rw-r--r-- 1 root root 0 июл  6 15:00 cgroup.procs
+-r--r--r-- 1 root root 0 июл  6 15:00 cgroup.stat
+-rw-r--r-- 1 root root 0 июл  6 15:00 cgroup.subtree_control
+-rw-r--r-- 1 root root 0 июл  6 15:00 cgroup.threads
+-rw-r--r-- 1 root root 0 июл  6 15:00 cgroup.type
+-rw-r--r-- 1 root root 0 июл  6 15:00 cpu.pressure
+-r--r--r-- 1 root root 0 июл  6 15:00 cpu.stat
+-rw-r--r-- 1 root root 0 июл  6 15:00 io.pressure
+-rw-r--r-- 1 root root 0 июл  6 15:00 memory.pressure
+root@db-linux:/home/db# cat /sys/fs/cgroup/cpuset/testgroup1/cpu.stat
+usage_usec 0
+user_usec 0
+system_usec 0
+root@db-linux:/home/db# cat /sys/fs/cgroup/cpuset/testgroup1/cpu.pressure
+some avg10=0.00 avg60=0.00 avg300=0.00 total=0
+full avg10=0.00 avg60=0.00 avg300=0.00 total=0
+root@db-linux:/home/db# cat /proc/$$/status | grep 'allowed'
+Cpus_allowed:   1
+Cpus_allowed_list:      0
+Mems_allowed:   00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000001
+Mems_allowed_list:      0
+root@db-linux:/home/db#
