@@ -1,0 +1,60 @@
+FROM ubuntu:22.10
+RUN apt-get update
+RUN install cowsay -y
+RUN cowsay
+CMD ["cowsay"]
+
+docker build -t cowsaytest .
+docker run cowsaytest cowsay “GeekBrains”
+
+FROM ubuntu:22.10
+RUN apt-get update && \
+    apt-get install -y cowsay && \
+    ln -s /usr/games/cowsay /usr/bin/cowsay && \
+    rm -rf /var/lib/apt/lists/*
+CMD [“cowsay”]
+
+FROM ubuntu:22.10
+RUN apt update
+RUN apt install -y cowsay
+RUN ln -s /usr/games/cowsay /usr/bin/cowsay
+CMD ["cowsay"]
+
+20:30
+FROM ubuntu:22.10
+RUN apt-get update && \
+    apt-get install -y cowsay && \
+    ln -s /usr/games/cowsay /usr/bin/cowsay && \
+    rm -rf /var/lib/apt/lists/*
+CMD [“cowsay”]
+
+20:30
+
+docker build -t myimage -f MyDockerfile .
+
+
+docker start -a mycontainer cowsay Hello, world!
+
+20:54
+docker create --name mycontainer cowsaytest
+
+20:55
+docker start -a mycontainer cowsay Hello, world!
+
+docker stop cowsaytest
+docker rm cowsaytest
+
+FROM ubuntu:22.10
+
+RUN apt update
+
+RUN apt install -y cowsay
+
+RUN ln -s /usr/games/cowsay /usr/bin/cowsay
+
+COPY Test1 /
+
+CMD ["cowsay"]
+
+2 
+
