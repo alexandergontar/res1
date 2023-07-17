@@ -1,0 +1,179 @@
+version: '3.9'
+services:
+  db:
+    image: mariadb:10.10.2
+#как пример показать и такое в режиме лайвкода:
+#    build: ./db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 12345
+  adminer:
+    image: adminer:4.8.1
+    restart: always
+    ports:
+      - 6080:8080
+
+root@db-linux:/home/db/compose# docker ps -a
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+root@db-linux:/home/db/compose#
+
+root@db-linux:/home/db/compose# docker-compose up
+Pulling db (mariadb:10.10.2)...
+10.10.2: Pulling from library/mariadb
+10ac4908093d: Pull complete
+44779101e748: Pull complete
+a721db3e3f3d: Pull complete
+1850a929b84a: Pull complete
+397a918c7da3: Pull complete
+806be17e856d: Pull complete
+634de6c90876: Pull complete
+cd00854cfb1a: Pull complete
+Digest: sha256:bfc25a68e113de43d0d112f5a7126df8e278579c3224e3923359e1c1d8d5ce6e
+Status: Downloaded newer image for mariadb:10.10.2
+Pulling adminer (adminer:4.8.1)...
+4.8.1: Pulling from library/adminer
+34df401c391c: Pull complete
+942860e9b081: Pull complete
+f571177b537e: Pull complete
+78d7a59571f8: Pull complete
+530e7e02f755: Pull complete
+03ee8734c62c: Pull complete
+ed7a0cc37cf2: Pull complete
+Digest: sha256:3751b49306d8fd25567ed2222d4f1fc55415badbb827956d38e8ca3e7167a5d8
+Status: Downloaded newer image for adminer:4.8.1
+Creating compose_db_1      ... done
+Creating compose_adminer_1 ... done
+Attaching to compose_adminer_1, compose_db_1
+adminer_1  | [Sun Jul 16 12:03:48 2023] PHP 7.4.33 Development Server (http://[::]:8080) started
+db_1       | 2023-07-16 12:03:48+00:00 [Note] [Entrypoint]: Entrypoint script for MariaDB Server 1:10.10.2+maria~ubu2204 started.
+db_1       | 2023-07-16 12:03:49+00:00 [Note] [Entrypoint]: Switching to dedicated user 'mysql'
+db_1       | 2023-07-16 12:03:49+00:00 [Note] [Entrypoint]: Entrypoint script for MariaDB Server 1:10.10.2+maria~ubu2204 started.
+db_1       | 2023-07-16 12:03:49+00:00 [Note] [Entrypoint]: Initializing database files
+db_1       |
+db_1       |
+db_1       | PLEASE REMEMBER TO SET A PASSWORD FOR THE MariaDB root USER !
+db_1       | To do so, start the server, then issue the following command:
+db_1       |
+db_1       | '/usr/bin/mysql_secure_installation'
+db_1       |
+db_1       | which will also give you the option of removing the test
+db_1       | databases and anonymous user created by default.  This is
+db_1       | strongly recommended for production servers.
+db_1       |
+db_1       | See the MariaDB Knowledgebase at https://mariadb.com/kb
+db_1       |
+db_1       | Please report any problems at https://mariadb.org/jira
+db_1       |
+db_1       | The latest information about MariaDB is available at https://mariadb.org/.
+db_1       |
+db_1       | Consider joining MariaDB's strong and vibrant community:
+db_1       | https://mariadb.org/get-involved/
+db_1       |
+db_1       | 2023-07-16 12:03:54+00:00 [Note] [Entrypoint]: Database files initialized
+db_1       | 2023-07-16 12:03:54+00:00 [Note] [Entrypoint]: Starting temporary server
+db_1       | 2023-07-16 12:03:54+00:00 [Note] [Entrypoint]: Waiting for server startup
+db_1       | 2023-07-16 12:03:54 0 [Note] mariadbd (server 10.10.2-MariaDB-1:10.10.2+maria~ubu2204) starting as process 89 ...
+db_1       | 2023-07-16 12:03:54 0 [Note] InnoDB: Compressed tables use zlib 1.2.11
+db_1       | 2023-07-16 12:03:54 0 [Note] InnoDB: Number of transaction pools: 1
+db_1       | 2023-07-16 12:03:54 0 [Note] InnoDB: Using SSE4.2 crc32 instructions
+db_1       | 2023-07-16 12:03:54 0 [Note] mariadbd: O_TMPFILE is not supported on /tmp (disabling future attempts)
+db_1       | 2023-07-16 12:03:54 0 [Note] InnoDB: Using liburing
+db_1       | 2023-07-16 12:03:54 0 [Note] InnoDB: Initializing buffer pool, total size = 128.000MiB, chunk size = 2.000MiB
+db_1       | 2023-07-16 12:03:54 0 [Note] InnoDB: Completed initialization of buffer pool
+db_1       | 2023-07-16 12:03:54 0 [Note] InnoDB: File system buffers for log disabled (block size=512 bytes)
+db_1       | 2023-07-16 12:03:54 0 [Note] InnoDB: 128 rollback segments are active.
+db_1       | 2023-07-16 12:03:54 0 [Note] InnoDB: Setting file './ibtmp1' size to 12.000MiB. Physically writing the file full; Please wait ...
+db_1       | 2023-07-16 12:03:54 0 [Note] InnoDB: File './ibtmp1' size is now 12.000MiB.
+db_1       | 2023-07-16 12:03:54 0 [Note] InnoDB: log sequence number 46524; transaction id 14
+db_1       | 2023-07-16 12:03:54 0 [Note] Plugin 'FEEDBACK' is disabled.
+db_1       | 2023-07-16 12:03:54 0 [Warning] 'user' entry 'root@3b014066a000' ignored in --skip-name-resolve mode.
+db_1       | 2023-07-16 12:03:54 0 [Warning] 'proxies_priv' entry '@% root@3b014066a000' ignored in --skip-name-resolve mode.
+db_1       | 2023-07-16 12:03:54 0 [Note] mariadbd: ready for connections.
+db_1       | Version: '10.10.2-MariaDB-1:10.10.2+maria~ubu2204'  socket: '/run/mysqld/mysqld.sock'  port: 0  mariadb.org binary distribution
+db_1       | 2023-07-16 12:03:55+00:00 [Note] [Entrypoint]: Temporary server started.
+db_1       | 2023-07-16 12:03:58+00:00 [Note] [Entrypoint]: Securing system users (equivalent to running mysql_secure_installation)
+db_1       |
+db_1       | 2023-07-16 12:03:58+00:00 [Note] [Entrypoint]: Stopping temporary server
+db_1       | 2023-07-16 12:03:58 0 [Note] mariadbd (initiated by: unknown): Normal shutdown
+db_1       | 2023-07-16 12:03:58 0 [Note] InnoDB: FTS optimize thread exiting.
+db_1       | 2023-07-16 12:03:59 0 [Note] InnoDB: Starting shutdown...
+db_1       | 2023-07-16 12:03:59 0 [Note] InnoDB: Dumping buffer pool(s) to /var/lib/mysql/ib_buffer_pool
+db_1       | 2023-07-16 12:03:59 0 [Note] InnoDB: Buffer pool(s) dump completed at 230716 12:03:59
+db_1       | 2023-07-16 12:03:59 0 [Note] InnoDB: Removed temporary tablespace data file: "./ibtmp1"
+db_1       | 2023-07-16 12:03:59 0 [Note] InnoDB: Shutdown completed; log sequence number 46524; transaction id 15
+db_1       | 2023-07-16 12:03:59 0 [Note] mariadbd: Shutdown complete
+db_1       |
+db_1       | 2023-07-16 12:03:59+00:00 [Note] [Entrypoint]: Temporary server stopped
+db_1       |
+db_1       | 2023-07-16 12:03:59+00:00 [Note] [Entrypoint]: MariaDB init process done. Ready for start up.
+db_1       |
+db_1       | 2023-07-16 12:03:59 0 [Note] mariadbd (server 10.10.2-MariaDB-1:10.10.2+maria~ubu2204) starting as process 1 ...
+db_1       | 2023-07-16 12:03:59 0 [Note] InnoDB: Compressed tables use zlib 1.2.11
+db_1       | 2023-07-16 12:03:59 0 [Note] InnoDB: Number of transaction pools: 1
+db_1       | 2023-07-16 12:03:59 0 [Note] InnoDB: Using SSE4.2 crc32 instructions
+db_1       | 2023-07-16 12:03:59 0 [Note] mariadbd: O_TMPFILE is not supported on /tmp (disabling future attempts)
+db_1       | 2023-07-16 12:03:59 0 [Note] InnoDB: Using liburing
+db_1       | 2023-07-16 12:03:59 0 [Note] InnoDB: Initializing buffer pool, total size = 128.000MiB, chunk size = 2.000MiB
+db_1       | 2023-07-16 12:03:59 0 [Note] InnoDB: Completed initialization of buffer pool
+db_1       | 2023-07-16 12:03:59 0 [Note] InnoDB: File system buffers for log disabled (block size=512 bytes)
+db_1       | 2023-07-16 12:03:59 0 [Note] InnoDB: 128 rollback segments are active.
+db_1       | 2023-07-16 12:03:59 0 [Note] InnoDB: Setting file './ibtmp1' size to 12.000MiB. Physically writing the file full; Please wait ...
+db_1       | 2023-07-16 12:03:59 0 [Note] InnoDB: File './ibtmp1' size is now 12.000MiB.
+db_1       | 2023-07-16 12:03:59 0 [Note] InnoDB: log sequence number 46524; transaction id 14
+db_1       | 2023-07-16 12:03:59 0 [Note] Plugin 'FEEDBACK' is disabled.
+db_1       | 2023-07-16 12:03:59 0 [Note] InnoDB: Loading buffer pool(s) from /var/lib/mysql/ib_buffer_pool
+db_1       | 2023-07-16 12:03:59 0 [Warning] You need to use --log-bin to make --expire-logs-days or --binlog-expire-logs-seconds work.
+db_1       | 2023-07-16 12:03:59 0 [Note] InnoDB: Buffer pool(s) load completed at 230716 12:03:59
+db_1       | 2023-07-16 12:03:59 0 [Note] Server socket created on IP: '0.0.0.0'.
+db_1       | 2023-07-16 12:03:59 0 [Note] Server socket created on IP: '::'.
+db_1       | 2023-07-16 12:03:59 0 [Note] mariadbd: ready for connections.
+db_1       | Version: '10.10.2-MariaDB-1:10.10.2+maria~ubu2204'  socket: '/run/mysqld/mysqld.sock'  port: 3306  mariadb.org binary distribution
+adminer_1  | [Sun Jul 16 14:55:19 2023] [::ffff:172.19.0.1]:44130 Accepted
+adminer_1  | [Sun Jul 16 14:55:19 2023] [::ffff:172.19.0.1]:44130 [200]: GET /
+adminer_1  | [Sun Jul 16 14:55:19 2023] [::ffff:172.19.0.1]:44130 Closing
+adminer_1  | [Sun Jul 16 14:56:26 2023] [::ffff:10.0.2.2]:54515 Accepted
+adminer_1  | [Sun Jul 16 14:56:26 2023] [::ffff:10.0.2.2]:54516 Accepted
+adminer_1  | [Sun Jul 16 14:56:26 2023] [::ffff:10.0.2.2]:54515 [200]: GET /
+adminer_1  | [Sun Jul 16 14:56:26 2023] [::ffff:10.0.2.2]:54515 Closing
+adminer_1  | [Sun Jul 16 14:56:26 2023] [::ffff:10.0.2.2]:54516 [200]: GET /?file=default.css&version=4.8.1
+adminer_1  | [Sun Jul 16 14:56:26 2023] [::ffff:10.0.2.2]:54516 Closing
+adminer_1  | [Sun Jul 16 14:56:26 2023] [::ffff:10.0.2.2]:54517 Accepted
+adminer_1  | [Sun Jul 16 14:56:26 2023] [::ffff:10.0.2.2]:54517 [200]: GET /?file=functions.js&version=4.8.1
+adminer_1  | [Sun Jul 16 14:56:26 2023] [::ffff:10.0.2.2]:54517 Closing
+adminer_1  | [Sun Jul 16 14:56:29 2023] [::ffff:10.0.2.2]:54531 Accepted
+adminer_1  | [Sun Jul 16 14:56:29 2023] [::ffff:10.0.2.2]:54531 [200]: POST /?script=version
+adminer_1  | [Sun Jul 16 14:56:29 2023] [::ffff:10.0.2.2]:54531 Closing
+adminer_1  | [Sun Jul 16 14:56:29 2023] [::ffff:10.0.2.2]:54532 Accepted
+adminer_1  | [Sun Jul 16 14:56:29 2023] [::ffff:10.0.2.2]:54532 [200]: GET /?file=favicon.ico&version=4.8.1
+adminer_1  | [Sun Jul 16 14:56:29 2023] [::ffff:10.0.2.2]:54532 Closing
+adminer_1  | [Sun Jul 16 14:56:30 2023] [::ffff:10.0.2.2]:54533 Accepted
+adminer_1  | [Sun Jul 16 14:56:41 2023] [::ffff:10.0.2.2]:54533 [302]: POST /
+adminer_1  | [Sun Jul 16 14:56:41 2023] [::ffff:10.0.2.2]:54533 Closing
+adminer_1  | [Sun Jul 16 14:56:41 2023] [::ffff:10.0.2.2]:54540 Accepted
+adminer_1  | [Sun Jul 16 14:56:41 2023] [::ffff:10.0.2.2]:54540 [200]: GET /?server=db&username=root
+adminer_1  | [Sun Jul 16 14:56:41 2023] [::ffff:10.0.2.2]:54540 Closing
+adminer_1  | [Sun Jul 16 14:56:42 2023] [::ffff:10.0.2.2]:54544 Accepted
+adminer_1  | [Sun Jul 16 14:56:42 2023] [::ffff:10.0.2.2]:54544 [200]: GET /?file=jush.js&version=4.8.1
+adminer_1  | [Sun Jul 16 14:56:42 2023] [::ffff:10.0.2.2]:54544 Closing
+adminer_1  | [Sun Jul 16 14:56:42 2023] [::ffff:10.0.2.2]:54546 Accepted
+adminer_1  | [Sun Jul 16 14:57:24 2023] [::ffff:10.0.2.2]:54546 Closed without sending a request; it was probably just an unused speculative preconnection
+adminer_1  | [Sun Jul 16 14:57:24 2023] [::ffff:10.0.2.2]:54546 Closing
+adminer_1  | [Sun Jul 16 17:53:47 2023] [::ffff:10.0.2.2]:58481 Accepted
+adminer_1  | [Sun Jul 16 17:55:30 2023] [::ffff:10.0.2.2]:58481 Closed without sending a request; it was probably just an unused speculative preconnection
+adminer_1  | [Sun Jul 16 17:55:30 2023] [::ffff:10.0.2.2]:58481 Closing
+^X^CGracefully stopping... (press Ctrl+C again to force)
+Stopping compose_db_1      ... done
+Stopping compose_adminer_1 ... done
+root@db-linux:/home/db/compose#
+root@db-linux:/home/db/compose#
+root@db-linux:/home/db/compose# docker-compose up -d
+Starting compose_db_1      ... done
+Starting compose_adminer_1 ... done
+root@db-linux:/home/db/compose#
+root@db-linux:/home/db/compose#
+root@db-linux:/home/db/compose# docker ps
+CONTAINER ID   IMAGE             COMMAND                  CREATED        STATUS              PORTS                                       NAMES
+3b014066a000   mariadb:10.10.2   "docker-entrypoint.s…"   18 hours ago   Up About a minute   3306/tcp                                    compose_db_1
+1833cdc1a323   adminer:4.8.1     "entrypoint.sh php -…"   18 hours ago   Up About a minute   0.0.0.0:6080->8080/tcp, :::6080->8080/tcp   compose_adminer_1
+root@db-linux:/home/db/compose# nano docker-compose.yml
+root@db-linux:/home/db/compose#

@@ -56,5 +56,19 @@ COPY Test1 /
 
 CMD ["cowsay"]
 
-2 
+2
+
+myproject/
+├── image1/
+│   ├── Dockerfile
+│   └── other-files
+├── image2/
+│   ├── Dockerfile
+│   └── other-files
+└── image3/
+    ├── Dockerfile
+    └── other-files
+
+cd myproject/image1
+docker build -t myimage1 . 
 
